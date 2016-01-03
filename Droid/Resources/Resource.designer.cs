@@ -26,6 +26,8 @@ namespace RiffSharer.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.ApplicationName = global::RiffSharer.Droid.Resource.String.ApplicationName;
+			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.Hello = global::RiffSharer.Droid.Resource.String.Hello;
 			global::Supermortal.Common.Droid.Classes.Resource.String.ApplicationName = global::RiffSharer.Droid.Resource.String.ApplicationName;
 			global::Supermortal.Common.Droid.Classes.Resource.String.Hello = global::RiffSharer.Droid.Resource.String.Hello;
 			global::Supermortal.Common.Droid.Classes.Resource.String.library_name = global::RiffSharer.Droid.Resource.String.library_name;
@@ -2316,11 +2318,11 @@ namespace RiffSharer.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f0a0014
-			public const int ApplicationName = 2131361812;
+			// aapt resource value: 0x7f0a0015
+			public const int ApplicationName = 2131361813;
 			
-			// aapt resource value: 0x7f0a0013
-			public const int Hello = 2131361811;
+			// aapt resource value: 0x7f0a0014
+			public const int Hello = 2131361812;
 			
 			// aapt resource value: 0x7f0a0001
 			public const int abc_action_bar_home_description = 2131361793;
@@ -2385,8 +2387,8 @@ namespace RiffSharer.Droid
 			// aapt resource value: 0x7f0a0016
 			public const int hello = 2131361814;
 			
-			// aapt resource value: 0x7f0a0015
-			public const int library_name = 2131361813;
+			// aapt resource value: 0x7f0a0013
+			public const int library_name = 2131361811;
 			
 			// aapt resource value: 0x7f0a0018
 			public const int openDrawer = 2131361816;

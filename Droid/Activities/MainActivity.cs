@@ -10,6 +10,10 @@ using Android.Widget;
 using Android.OS;
 using Android.Support.V4.Widget;
 using RiffSharer.Models;
+using Supermortal.Common.PCL.Helpers;
+using Supermortal.Common.PCL.Concrete;
+using Supermortal.Common.PCL.Abstract;
+using RiffSharer;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using SupportFragment = Android.Support.V4.App.Fragment;
 
@@ -35,6 +39,7 @@ namespace RiffSharer.Droid
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Main);
+            AddBindings();
 
             SetViews();
             CreateFragments();
@@ -60,6 +65,14 @@ namespace RiffSharer.Droid
         #endregion
 
         #region Helpers
+
+        private void AddBindings()
+        {
+            IoCHelper.Instance = new NinjectIoCHelper();
+
+            IoCHelper.Instance.BindService<AAudioRepository, SQLiteAudioRepository>();
+            IoCHelper.Instance.BindService<ISQLite, SQLite_Android>();
+        }
 
         private void SetViews()
         {
