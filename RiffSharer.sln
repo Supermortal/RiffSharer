@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiffSharer.Droid", "Droid\R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Supermortal.Common.PCL", "..\Supermortal.Common.PCL\Supermortal.Common.PCL\Supermortal.Common.PCL.csproj", "{48B2B177-BC6F-4D97-B2E9-6BA4C567D1BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Supermortal.Common.Droid.Classes", "..\Supermortal.Common.Droid.Classes\Supermortal.Common.Droid.Classes.csproj", "{B7AD8CA1-E826-4777-BD28-A9C35C225AF7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,5 +69,17 @@ Global
 		{A108D153-A91E-43BB-BD29-21F7B98983B7}.Release|iPhone.Build.0 = Release|iPhone
 		{A108D153-A91E-43BB-BD29-21F7B98983B7}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
 		{A108D153-A91E-43BB-BD29-21F7B98983B7}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{B7AD8CA1-E826-4777-BD28-A9C35C225AF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7AD8CA1-E826-4777-BD28-A9C35C225AF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7AD8CA1-E826-4777-BD28-A9C35C225AF7}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{B7AD8CA1-E826-4777-BD28-A9C35C225AF7}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{B7AD8CA1-E826-4777-BD28-A9C35C225AF7}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{B7AD8CA1-E826-4777-BD28-A9C35C225AF7}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{B7AD8CA1-E826-4777-BD28-A9C35C225AF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7AD8CA1-E826-4777-BD28-A9C35C225AF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7AD8CA1-E826-4777-BD28-A9C35C225AF7}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{B7AD8CA1-E826-4777-BD28-A9C35C225AF7}.Release|iPhone.Build.0 = Release|Any CPU
+		{B7AD8CA1-E826-4777-BD28-A9C35C225AF7}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{B7AD8CA1-E826-4777-BD28-A9C35C225AF7}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
