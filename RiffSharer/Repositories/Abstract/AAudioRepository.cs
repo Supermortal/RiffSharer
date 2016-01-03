@@ -5,7 +5,7 @@ using Supermortal.Common.PCL.Abstract;
 
 using RiffSharer.Models;
 
-namespace RiffSharer
+namespace RiffSharer.Repositories.Abstract
 {
     public abstract class AAudioRepository : ATableQueryRepository<string, Audio>
     {

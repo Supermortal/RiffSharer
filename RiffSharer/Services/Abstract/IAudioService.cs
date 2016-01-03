@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace RiffSharer
+using RiffSharer.Models;
+
+namespace RiffSharer.Services.Abstract
 {
     public interface IAudioService
     {
-        void StartRecording();
-
-        void StopRecording();
+        void SaveAudio(Audio a);
     }
 }
 

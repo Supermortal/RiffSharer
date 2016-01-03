@@ -4,8 +4,9 @@ using Supermortal.Common.PCL.Abstract;
 using Supermortal.Common.PCL.Helpers;
 
 using RiffSharer.Models;
+using RiffSharer.Repositories.Abstract;
 
-namespace RiffSharer
+namespace RiffSharer.Repositories.Concrete
 {
     public class SQLiteAudioRepository : AAudioRepository
     {

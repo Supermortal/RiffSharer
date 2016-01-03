@@ -14,13 +14,15 @@ using Supermortal.Common.PCL.Helpers;
 using Supermortal.Common.PCL.Concrete;
 using Supermortal.Common.PCL.Abstract;
 using RiffSharer;
+using RiffSharer.Repositories.Abstract;
+using RiffSharer.Repositories.Concrete;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using SupportFragment = Android.Support.V4.App.Fragment;
 
 namespace RiffSharer.Droid
 {
     [Activity(Label = "RiffSharer.Droid", Icon = "@drawable/icon", Theme = "@style/MyTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : Android.Support.V7.App.ActionBarActivity
+    public class MainActivity : Android.Support.V7.App.AppCompatActivity
     {
 
         private SupportToolbar _toolbar;
@@ -46,8 +48,6 @@ namespace RiffSharer.Droid
             SetUpFragments();
             SetUpActionBar();
             SetUpNavigationDrawer();
-
-            var audio = new Audio();
         }
 
         protected override void OnPostCreate(Bundle savedInstanceState)

@@ -7,11 +7,11 @@ namespace RiffSharer
 {
     public class ActionBarDrawerToggle : SupportActionBarDrawerToggle
     {
-        private ActionBarActivity _activity;
+        private AppCompatActivity _activity;
         private int _openedResource;
         private int _closedResource;
 
-        public ActionBarDrawerToggle(ActionBarActivity host, DrawerLayout drawerLayout, int openedResource, int closedResource)
+        public ActionBarDrawerToggle(AppCompatActivity host, DrawerLayout drawerLayout, int openedResource, int closedResource)
             : base(host, drawerLayout, openedResource, closedResource)
         {
             _activity = host;
