@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="hello">Hello World, Click Me!</string>
+	<string name="app_name">RiffSharer</string>
+	<string name="openDrawer">Drawer Open</string>
+	<string name="closeDrawer">Drawer Closed</string>
+	<string-array name="drawer_list">
+		<item>Home</item>
+		<item>Profile</item>
+		<item>Record Audio</item>
+	</string-array>
+</resources>
