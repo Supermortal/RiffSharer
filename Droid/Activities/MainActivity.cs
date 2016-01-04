@@ -72,6 +72,7 @@ namespace RiffSharer.Droid
         {
             IoCHelper.Instance = new NinjectIoCHelper();
 
+            IoCHelper.Instance.BindService<AUserRepository, SQLiteUserRepository>();
             IoCHelper.Instance.BindService<AAudioRepository, SQLiteAudioRepository>();
             IoCHelper.Instance.BindService<ISQLite, SQLite_Android>();
             IoCHelper.Instance.BindService<IAudioService, DefaultAudioService>();

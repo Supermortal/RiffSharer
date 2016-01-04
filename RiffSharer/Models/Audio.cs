@@ -1,11 +1,14 @@
 ﻿using System;
 
+using SQLite.Net.Attributes;
+
 using Supermortal.Common.PCL.Enums;
 
 namespace RiffSharer.Models
 {
     public class Audio
     {
+        [PrimaryKey]
         public string AudioID { get; set; }
 
         public string Name { get; set; }
@@ -21,6 +24,8 @@ namespace RiffSharer.Models
         public int SampleRate { get; set; }
 
         public byte[] Data { get; set; }
+
+        public string UserID { get; set; }
 
         #region Methods
 
