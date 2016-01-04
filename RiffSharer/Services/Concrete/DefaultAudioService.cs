@@ -24,7 +24,7 @@ namespace RiffSharer.Services.Concrete
             _ar = ar;
         }
 
-        public void SaveAudio(string name, AudioFormat audioFormat, ChannelConfiguration channelConfiguration, int sampleRate, byte[] data)
+        public Audio SaveAudio(string name, AudioFormat audioFormat, ChannelConfiguration channelConfiguration, int sampleRate, byte[] data)
         {
             var audio = new Audio();
 
@@ -34,12 +34,17 @@ namespace RiffSharer.Services.Concrete
             audio.SampleRate = sampleRate;
             audio.Data = data;
 
-            _ar.Insert(audio);
+            return _ar.Insert(audio);
         }
 
-        public void SaveAudio(string name, string localPath)
+        public Audio SaveAudio(string name, string localPath)
         {
             throw new NotImplementedException();
+        }
+
+        public Audio GetAudio(string audioId)
+        {
+            return _ar.Get(audioId);
         }
     }
 }

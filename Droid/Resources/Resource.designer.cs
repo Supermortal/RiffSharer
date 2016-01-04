@@ -1747,8 +1747,8 @@ namespace RiffSharer.Droid
 			// aapt resource value: 0x7f060072
 			public const int action_divider = 2131099762;
 			
-			// aapt resource value: 0x7f060080
-			public const int action_help = 2131099776;
+			// aapt resource value: 0x7f060082
+			public const int action_help = 2131099778;
 			
 			// aapt resource value: 0x7f060004
 			public const int action_menu_divider = 2131099652;
@@ -1765,8 +1765,8 @@ namespace RiffSharer.Droid
 			// aapt resource value: 0x7f06003d
 			public const int action_mode_close_button = 2131099709;
 			
-			// aapt resource value: 0x7f06007f
-			public const int action_refresh = 2131099775;
+			// aapt resource value: 0x7f060081
+			public const int action_refresh = 2131099777;
 			
 			// aapt resource value: 0x7f06003e
 			public const int activity_chooser_view_content = 2131099710;
@@ -1933,6 +1933,9 @@ namespace RiffSharer.Droid
 			// aapt resource value: 0x7f060036
 			public const int multiply = 2131099702;
 			
+			// aapt resource value: 0x7f06007f
+			public const int name = 2131099775;
+			
 			// aapt resource value: 0x7f060031
 			public const int never = 2131099697;
 			
@@ -1968,6 +1971,9 @@ namespace RiffSharer.Droid
 			
 			// aapt resource value: 0x7f06001d
 			public const int right = 2131099677;
+			
+			// aapt resource value: 0x7f060080
+			public const int save = 2131099776;
 			
 			// aapt resource value: 0x7f060037
 			public const int screen = 2131099703;
@@ -2327,6 +2333,9 @@ namespace RiffSharer.Droid
 			// aapt resource value: 0x7f0a0014
 			public const int Hello = 2131361812;
 			
+			// aapt resource value: 0x7f0a001c
+			public const int a_name_is_required = 2131361820;
+			
 			// aapt resource value: 0x7f0a0001
 			public const int abc_action_bar_home_description = 2131361793;
 			
@@ -2395,6 +2404,12 @@ namespace RiffSharer.Droid
 			
 			// aapt resource value: 0x7f0a0018
 			public const int openDrawer = 2131361816;
+			
+			// aapt resource value: 0x7f0a001b
+			public const int riff_name = 2131361819;
+			
+			// aapt resource value: 0x7f0a001a
+			public const int save = 2131361818;
 			
 			// aapt resource value: 0x7f0a0012
 			public const int status_bar_notification_info_overflow = 2131361810;

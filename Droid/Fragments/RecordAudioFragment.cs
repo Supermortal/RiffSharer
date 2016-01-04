@@ -14,26 +14,46 @@ using Android.Views;
 using Android.Widget;
 using Android.Media;
 
+using Supermortal.Common.PCL.Helpers;
 using Supermortal.Common.Droid.Helpers;
+
+using RiffSharer.Services.Abstract;
 
 namespace RiffSharer.Droid
 {
     public class RecordAudioFragment : Android.Support.V4.App.Fragment
     {
+
+        private readonly IAudioService _as;
+
         private Activity _activity;
         private AudioRecord _audioRecord;
         private AudioTrack _audioTrack;
         private ImageView _play;
         private ImageView _stop;
         private ImageView _record;
+        private Button _save;
+        private EditText _name;
 
         private int _sampleAudioBitRate;
         private byte[] _audioDataBuffer;
         private List<byte> _audioData;
         private volatile bool _isAudioRecording = false;
+        private volatile bool _isPlaying = false;
         private int _bufferLength;
         private Android.Media.Encoding _audioFormat;
         private ChannelIn _channelConfig;
+
+        public RecordAudioFragment()
+            : this(IoCHelper.Instance.GetService<IAudioService>())
+        {
+            
+        }
+
+        public RecordAudioFragment(IAudioService audioService)
+        {
+            _as = audioService;
+        }
 
         #region Lifecycle
 
@@ -62,6 +82,7 @@ namespace RiffSharer.Droid
             _record.Click += Click_Record;
             _stop.Click += Click_Stop;
             _play.Click += Click_Play;
+            _save.Click += Click_Save;
         }
 
         public override void OnPause()
@@ -90,6 +111,8 @@ namespace RiffSharer.Droid
             _stop = _activity.FindViewById<ImageView>(Resource.Id.stop);
             _record = _activity.FindViewById<ImageView>(Resource.Id.record);
             _play = _activity.FindViewById<ImageView>(Resource.Id.play);
+            _save = _activity.FindViewById<Button>(Resource.Id.save);
+            _name = _activity.FindViewById<EditText>(Resource.Id.name);
         }
 
         protected void DisposeAll()
@@ -147,12 +170,11 @@ namespace RiffSharer.Droid
             _stop.Visibility = ViewStates.Gone;
             _record.Visibility = ViewStates.Visible;
             _play.Visibility = ViewStates.Visible;
+            _save.Enabled = true;
 
             _isAudioRecording = false;
             _audioRecord.Stop();
         }
-
-        private volatile bool _isPlaying = false;
 
         private void Click_Play(object sender, EventArgs e)
         {
@@ -186,6 +208,22 @@ namespace RiffSharer.Droid
                             _play.SetImageResource(Resource.Drawable.play);
                         });
                 });
+        }
+
+        private void Click_Save(object sender, EventArgs e)
+        {
+            var name = _name.Text;
+            if (string.IsNullOrEmpty(name))
+            {
+                _name.Error = _activity.Resources.GetString(Resource.String.a_name_is_required);
+                return;
+            }
+
+            var data = _audioData.ToArray();
+
+            var audioFormat = AudioHelper.AndroidAudioFormatToAudioFormat(_audioFormat);
+            var channelConfig = AudioHelper.AndroidChannelConfigurationToChannelConfiguration(_channelConfig);
+            _as.SaveAudio(name, audioFormat, channelConfig, _sampleAudioBitRate, data);
         }
 
         #endregion

@@ -47,7 +47,7 @@ namespace RiffSharer.Repositories.Concrete
 
         public override Audio Insert(Audio obj)
         {
-            obj.DateCreated = DateTime.Now;
+            obj.DateCreated = DateTime.UtcNow;
             obj.AudioID = Guid.NewGuid().ToString();
 
             using (var conn = _sqlLite.GetConnection())

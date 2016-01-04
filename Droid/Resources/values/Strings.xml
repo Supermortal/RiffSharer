@@ -9,4 +9,7 @@
 		<item>Profile</item>
 		<item>Record Audio</item>
 	</string-array>
+	<string name="save">Save</string>
+	<string name="riff_name">Riff Name</string>
+	<string name="a_name_is_required">A Riff name is required</string>
 </resources>
