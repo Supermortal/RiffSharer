@@ -16,6 +16,8 @@ using Supermortal.Common.PCL.Abstract;
 using RiffSharer;
 using RiffSharer.Repositories.Abstract;
 using RiffSharer.Repositories.Concrete;
+using RiffSharer.Services.Abstract;
+using RiffSharer.Services.Concrete;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using SupportFragment = Android.Support.V4.App.Fragment;
 
@@ -72,6 +74,7 @@ namespace RiffSharer.Droid
 
             IoCHelper.Instance.BindService<AAudioRepository, SQLiteAudioRepository>();
             IoCHelper.Instance.BindService<ISQLite, SQLite_Android>();
+            IoCHelper.Instance.BindService<IAudioService, DefaultAudioService>();
         }
 
         private void SetViews()

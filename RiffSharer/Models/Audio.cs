@@ -1,6 +1,6 @@
 ﻿using System;
 
-using RiffSharer.Models.Enums;
+using Supermortal.Common.PCL.Enums;
 
 namespace RiffSharer.Models
 {
