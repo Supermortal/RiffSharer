@@ -1747,8 +1747,8 @@ namespace RiffSharer.Droid
 			// aapt resource value: 0x7f060072
 			public const int action_divider = 2131099762;
 			
-			// aapt resource value: 0x7f06007f
-			public const int action_help = 2131099775;
+			// aapt resource value: 0x7f060080
+			public const int action_help = 2131099776;
 			
 			// aapt resource value: 0x7f060004
 			public const int action_menu_divider = 2131099652;
@@ -1765,8 +1765,8 @@ namespace RiffSharer.Droid
 			// aapt resource value: 0x7f06003d
 			public const int action_mode_close_button = 2131099709;
 			
-			// aapt resource value: 0x7f06007e
-			public const int action_refresh = 2131099774;
+			// aapt resource value: 0x7f06007f
+			public const int action_refresh = 2131099775;
 			
 			// aapt resource value: 0x7f06003e
 			public const int activity_chooser_view_content = 2131099710;
@@ -1951,6 +1951,9 @@ namespace RiffSharer.Droid
 			// aapt resource value: 0x7f060011
 			public const int pin = 2131099665;
 			
+			// aapt resource value: 0x7f06007c
+			public const int play = 2131099772;
+			
 			// aapt resource value: 0x7f060007
 			public const int progress_circular = 2131099655;
 			
@@ -1960,8 +1963,8 @@ namespace RiffSharer.Droid
 			// aapt resource value: 0x7f060052
 			public const int radio = 2131099730;
 			
-			// aapt resource value: 0x7f06007d
-			public const int record = 2131099773;
+			// aapt resource value: 0x7f06007e
+			public const int record = 2131099774;
 			
 			// aapt resource value: 0x7f06001d
 			public const int right = 2131099677;
@@ -2047,8 +2050,8 @@ namespace RiffSharer.Droid
 			// aapt resource value: 0x7f060070
 			public const int status_bar_latest_event_content = 2131099760;
 			
-			// aapt resource value: 0x7f06007c
-			public const int stop = 2131099772;
+			// aapt resource value: 0x7f06007d
+			public const int stop = 2131099773;
 			
 			// aapt resource value: 0x7f060063
 			public const int submit_area = 2131099747;

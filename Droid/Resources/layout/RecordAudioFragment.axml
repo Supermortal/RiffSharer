@@ -10,12 +10,13 @@
         android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
-    <!--        <ImageView
-        	android:id="@+id/play"
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/play"
             android:layout_marginRight="20dp"
             android:src="@drawable/play"
             android:layout_width="50dp"
-            android:layout_height="50dp" />-->
+            android:layout_height="50dp" />
         <ImageView
             android:visibility="gone"
             android:id="@+id/stop"
@@ -30,15 +31,4 @@
             android:layout_width="50dp"
             android:layout_height="50dp" />
     </LinearLayout>
-<!-- <Button
-        android:id="@+id/start"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Start Recording" />
- <Button
-        android:id="@+id/stop"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:enabled="false"
-        android:text="Stop Recording" />-->
 </LinearLayout>

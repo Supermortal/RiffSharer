@@ -22,9 +22,8 @@ namespace RiffSharer.Droid
     {
         private Activity _activity;
         private AudioRecord _audioRecord;
-        private MediaRecorder _recorder;
-        private MediaPlayer _player;
-        //        ImageView _play;
+        private AudioTrack _audioTrack;
+        private ImageView _play;
         private ImageView _stop;
         private ImageView _record;
 
@@ -58,20 +57,11 @@ namespace RiffSharer.Droid
         {
             base.OnResume();
 
-            _recorder = new MediaRecorder();
-            _player = new MediaPlayer();
-
-            _player.Completion += (sender, e) =>
-            {
-                _player.Reset();
-                _record.Visibility = ViewStates.Visible;
-                _stop.Visibility = ViewStates.Gone;
-            };
-
             SetViews();
 
             _record.Click += Click_Record;
             _stop.Click += Click_Stop;
+            _play.Click += Click_Play;
         }
 
         public override void OnPause()
@@ -99,7 +89,7 @@ namespace RiffSharer.Droid
         {
             _stop = _activity.FindViewById<ImageView>(Resource.Id.stop);
             _record = _activity.FindViewById<ImageView>(Resource.Id.record);
-            //_play = _activity.FindViewById<ImageView>(Resource.Id.play);
+            _play = _activity.FindViewById<ImageView>(Resource.Id.play);
         }
 
         protected void DisposeAll()
@@ -111,24 +101,18 @@ namespace RiffSharer.Droid
                 _audioRecord = null;
             }
 
-            if (_player != null)
+            if (_audioTrack != null)
             {
-                _player.Release();
-                _player.Dispose();
-                _player = null;
-            }
-
-            if (_recorder != null)
-            {
-                _recorder.Release();
-                _recorder.Dispose();
-                _recorder = null;
+                _audioTrack.Release();
+                _audioTrack.Dispose();
+                _audioTrack = null;
             }
 
             _audioDataBuffer = null;
             _isAudioRecording = false;
             _bufferLength = 0;
             _audioData = null;
+            _isPlaying = false;
         }
 
         #endregion
@@ -139,6 +123,7 @@ namespace RiffSharer.Droid
         {
             _stop.Visibility = ViewStates.Visible;
             _record.Visibility = ViewStates.Gone;
+            _play.Visibility = ViewStates.Gone;
 
             _audioRecord = AudioHelper.FindAudioRecord(ref _sampleAudioBitRate, ref _audioFormat, ref _channelConfig, ref _bufferLength);
             _audioDataBuffer = new byte[_bufferLength];
@@ -151,7 +136,7 @@ namespace RiffSharer.Droid
                 {
                     while (_isAudioRecording)
                     {
-                        var bufferReadResult = _audioRecord.Read(_audioDataBuffer, 0, _audioDataBuffer.Length);
+                        _audioRecord.Read(_audioDataBuffer, 0, _audioDataBuffer.Length);
                         _audioData.AddRange(_audioDataBuffer);
                     } 
                 });
@@ -161,9 +146,25 @@ namespace RiffSharer.Droid
         {
             _stop.Visibility = ViewStates.Gone;
             _record.Visibility = ViewStates.Visible;
+            _play.Visibility = ViewStates.Visible;
 
             _isAudioRecording = false;
             _audioRecord.Stop();
+        }
+
+        private volatile bool _isPlaying = false;
+
+        private void Click_Play(object sender, EventArgs e)
+        {
+            if (_isPlaying)
+            {          
+                _audioTrack.Stop();
+                _isPlaying = false;
+                _play.SetImageResource(Resource.Drawable.play);
+                return;
+            }
+
+            _play.SetImageResource(Resource.Drawable.stop);
 
             var byteArr = _audioData.ToArray();
 
@@ -171,10 +172,20 @@ namespace RiffSharer.Droid
             Android.Media.Encoding audioFormat = Android.Media.Encoding.Pcm16bit;
             ChannelOut channelConfig = ChannelOut.Stereo;
             int bufferLength = 0;
-            AudioTrack audioTrack = AudioHelper.FindAudioTrack(ref sampleRate, ref audioFormat, ref channelConfig, ref bufferLength);
+            _audioTrack = AudioHelper.FindAudioTrack(ref sampleRate, ref audioFormat, ref channelConfig, ref bufferLength);
 
-            audioTrack.Play();
-            audioTrack.Write(byteArr, 0, byteArr.Length);
+            _isPlaying = true;
+
+            (new TaskFactory()).StartNew(() =>
+                {
+                    _audioTrack.Play();
+                    _audioTrack.Write(byteArr, 0, byteArr.Length);
+                    _activity.RunOnUiThread(() =>
+                        {
+                            _isPlaying = false;
+                            _play.SetImageResource(Resource.Drawable.play);
+                        });
+                });
         }
 
         #endregion
