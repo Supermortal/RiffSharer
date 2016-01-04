@@ -14,6 +14,8 @@ using Android.Views;
 using Android.Widget;
 using Android.Media;
 
+using Supermortal.Common.Droid.Helpers;
+
 namespace RiffSharer.Droid
 {
     public class RecordAudioFragment : Android.Support.V4.App.Fragment
@@ -26,7 +28,6 @@ namespace RiffSharer.Droid
         private ImageView _stop;
         private ImageView _record;
 
-        private string _path = "/sdcard/test.3gpp";
         private int _sampleAudioBitRate;
         private byte[] _audioDataBuffer;
         private List<byte> _audioData;
@@ -130,82 +131,6 @@ namespace RiffSharer.Droid
             _audioData = null;
         }
 
-        private static int[] _sampleRates = new int[] { 44100, 22050, 11025, 8000 };
-
-        public AudioRecord FindAudioRecord(ref int sampleRate, ref Android.Media.Encoding audioFormat, ref ChannelIn channelConfig, ref int bufferSize)
-        {
-            foreach (int sr in _sampleRates)
-            {
-                foreach (var af in new Android.Media.Encoding[] { Android.Media.Encoding.Pcm16bit, Android.Media.Encoding.Pcm8bit })
-                {
-                    foreach (var cc in new ChannelIn[] { ChannelIn.Stereo, ChannelIn.Mono })
-                    {
-                        try
-                        {
-//                            Log.Debug(C.TAG, "Attempting rate " + rate + "Hz, bits: " + audioFormat + ", channel: "
-//                                + channelConfig);
-                            int bs = AudioRecord.GetMinBufferSize(sr, cc, af);
-
-                            if (bs > 0)
-                            {
-                                // check if we can instantiate and have a success
-                                AudioRecord recorder = new AudioRecord(AudioSource.Default, sr, cc, af, bs);
-
-                                if (recorder.State == State.Initialized)
-                                {
-                                    bufferSize = bs;
-                                    sampleRate = sr;
-                                    audioFormat = af;
-                                    channelConfig = cc;
-
-                                    return recorder;
-                                }      
-                            }
-                        }
-                        catch (Exception e)
-                        {
-//                            Log.e(C.TAG, rate + "Exception, keep trying.", e);
-                        }
-                    }
-                }
-            }
-            return null;
-        }
-
-        public AudioTrack FindAudioTrack(ref int sampleRate, ref Android.Media.Encoding audioFormat, ref ChannelOut channelConfig, ref int bufferSize)
-        {
-            foreach (var sr in _sampleRates)
-            {
-                foreach (var af in new Android.Media.Encoding[] { Android.Media.Encoding.Pcm16bit, Android.Media.Encoding.Pcm8bit })
-                {
-                    foreach (var cc in new ChannelOut[] { ChannelOut.Stereo, ChannelOut.Mono })
-                    {
-                        foreach (var atm in new AudioTrackMode[] { AudioTrackMode.Static, AudioTrackMode.Stream})
-                        {
-                            int bs = AudioTrack.GetMinBufferSize(sr, cc, af);
-
-                            if (bs > 0)
-                            {
-                                var audioTrack = new AudioTrack(Stream.Music, sr, cc, af, bs, atm);
-
-                                if (audioTrack.State == AudioTrackState.Initialized)
-                                {
-                                    sampleRate = sr;
-                                    audioFormat = af;
-                                    channelConfig = cc;
-                                    bufferSize = bs;
-
-                                    return audioTrack;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            return null;
-        }
-
         #endregion
 
         #region Events
@@ -215,14 +140,14 @@ namespace RiffSharer.Droid
             _stop.Visibility = ViewStates.Visible;
             _record.Visibility = ViewStates.Gone;
 
-            _audioRecord = FindAudioRecord(ref _sampleAudioBitRate, ref _audioFormat, ref _channelConfig, ref _bufferLength);
+            _audioRecord = AudioHelper.FindAudioRecord(ref _sampleAudioBitRate, ref _audioFormat, ref _channelConfig, ref _bufferLength);
             _audioDataBuffer = new byte[_bufferLength];
             _audioData = new List<byte>();
 
             _audioRecord.StartRecording();
             _isAudioRecording = true;
 
-            var t = (new TaskFactory()).StartNew(() =>
+            (new TaskFactory()).StartNew(() =>
                 {
                     while (_isAudioRecording)
                     {
@@ -230,13 +155,6 @@ namespace RiffSharer.Droid
                         _audioData.AddRange(_audioDataBuffer);
                     } 
                 });
-
-//            _recorder.SetAudioSource(AudioSource.Mic);
-//            _recorder.SetOutputFormat(OutputFormat.ThreeGpp);
-//            _recorder.SetAudioEncoder(AudioEncoder.AmrNb);
-//            _recorder.SetOutputFile(_path);
-//            _recorder.Prepare();
-//            _recorder.Start();
         }
 
         private void Click_Stop(object sender, EventArgs e)
@@ -253,17 +171,10 @@ namespace RiffSharer.Droid
             Android.Media.Encoding audioFormat = Android.Media.Encoding.Pcm16bit;
             ChannelOut channelConfig = ChannelOut.Stereo;
             int bufferLength = 0;
-            AudioTrack audioTrack = FindAudioTrack(ref sampleRate, ref audioFormat, ref channelConfig, ref bufferLength);
+            AudioTrack audioTrack = AudioHelper.FindAudioTrack(ref sampleRate, ref audioFormat, ref channelConfig, ref bufferLength);
 
             audioTrack.Play();
             audioTrack.Write(byteArr, 0, byteArr.Length);
-
-//            _recorder.Stop();
-//            _recorder.Reset();
-//
-//            _player.SetDataSource(_path);
-//            _player.Prepare();
-//            _player.Start();
         }
 
         #endregion
