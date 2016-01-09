@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<item type="color" name="main">#ddbb88</item>
+	<item type="color" name="accent">#dbdbdc</item>
+	<item type="color" name="dark">#655234</item>
+	<item type="color" name="background">#0b0000</item>
+	<item type="color" name="altBackground">#655234</item>
+	<item type="color" name="button">#655234</item>
+	<item type="color" name="text">#dbdbdc</item>
+</resources>

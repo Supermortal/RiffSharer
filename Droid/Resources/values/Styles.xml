@@ -1,11 +1,26 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <resources>
 	<style name="MyTheme" parent="Theme.AppCompat.Light.NoActionBar">
-		<item name="colorPrimary">#2196F3</item>
+		<item name="colorPrimary">@color/main</item>
+		<!--   darker variant for the status bar and contextual app bars -->
+		<item name="colorPrimaryDark">@color/dark</item>
+		<item name="android:windowBackground">@color/background</item>
+		<!--   theme UI controls like checkboxes and text fields -->
+		<item name="colorAccent">@color/accent</item>
 		<item name="drawerArrowStyle">@style/MyDrawerArrowStyle</item>
+		<item name="colorButtonNormal">@color/button</item>
+		<!--		<item name="colorButtonDisabled">@color/dark</item>-->
+		<item name="android:textColorPrimary">@color/text</item>
 	</style>
 	<style name="MyDrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
-		<item name="color">#F5F5F5</item>
+		<item name="color">@color/accent</item>
 		<item name="spinBars">true</item>
+	</style>
+	<style name="TextLabel" parent="TextAppearance.AppCompat">
+		<item name="android:textColorHint">@color/text</item>
+		<item name="android:textSize">20dp</item>
+		<item name="colorAccent">@color/accent</item>
+		<item name="colorControlNormal">@color/main</item>
+		<item name="colorControlActivated">@color/accent</item>
 	</style>
 </resources>

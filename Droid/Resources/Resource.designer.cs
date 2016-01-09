@@ -955,29 +955,29 @@ namespace RiffSharer.Droid
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f070040
-			public const int abc_background_cache_hint_selector_material_dark = 2131165248;
+			// aapt resource value: 0x7f070047
+			public const int abc_background_cache_hint_selector_material_dark = 2131165255;
 			
-			// aapt resource value: 0x7f070041
-			public const int abc_background_cache_hint_selector_material_light = 2131165249;
+			// aapt resource value: 0x7f070048
+			public const int abc_background_cache_hint_selector_material_light = 2131165256;
 			
 			// aapt resource value: 0x7f07000d
 			public const int abc_input_method_navigation_guard = 2131165197;
 			
-			// aapt resource value: 0x7f070042
-			public const int abc_primary_text_disable_only_material_dark = 2131165250;
+			// aapt resource value: 0x7f070049
+			public const int abc_primary_text_disable_only_material_dark = 2131165257;
 			
-			// aapt resource value: 0x7f070043
-			public const int abc_primary_text_disable_only_material_light = 2131165251;
+			// aapt resource value: 0x7f07004a
+			public const int abc_primary_text_disable_only_material_light = 2131165258;
 			
-			// aapt resource value: 0x7f070044
-			public const int abc_primary_text_material_dark = 2131165252;
+			// aapt resource value: 0x7f07004b
+			public const int abc_primary_text_material_dark = 2131165259;
 			
-			// aapt resource value: 0x7f070045
-			public const int abc_primary_text_material_light = 2131165253;
+			// aapt resource value: 0x7f07004c
+			public const int abc_primary_text_material_light = 2131165260;
 			
-			// aapt resource value: 0x7f070046
-			public const int abc_search_url_text = 2131165254;
+			// aapt resource value: 0x7f07004d
+			public const int abc_search_url_text = 2131165261;
 			
 			// aapt resource value: 0x7f07000e
 			public const int abc_search_url_text_normal = 2131165198;
@@ -988,17 +988,26 @@ namespace RiffSharer.Droid
 			// aapt resource value: 0x7f070010
 			public const int abc_search_url_text_selected = 2131165200;
 			
-			// aapt resource value: 0x7f070047
-			public const int abc_secondary_text_material_dark = 2131165255;
+			// aapt resource value: 0x7f07004e
+			public const int abc_secondary_text_material_dark = 2131165262;
 			
-			// aapt resource value: 0x7f070048
-			public const int abc_secondary_text_material_light = 2131165256;
+			// aapt resource value: 0x7f07004f
+			public const int abc_secondary_text_material_light = 2131165263;
+			
+			// aapt resource value: 0x7f070041
+			public const int accent = 2131165249;
 			
 			// aapt resource value: 0x7f070011
 			public const int accent_material_dark = 2131165201;
 			
 			// aapt resource value: 0x7f070012
 			public const int accent_material_light = 2131165202;
+			
+			// aapt resource value: 0x7f070044
+			public const int altBackground = 2131165252;
+			
+			// aapt resource value: 0x7f070043
+			public const int background = 2131165251;
 			
 			// aapt resource value: 0x7f070013
 			public const int background_floating_material_dark = 2131165203;
@@ -1030,6 +1039,9 @@ namespace RiffSharer.Droid
 			// aapt resource value: 0x7f07001c
 			public const int bright_foreground_material_light = 2131165212;
 			
+			// aapt resource value: 0x7f070045
+			public const int button = 2131165253;
+			
 			// aapt resource value: 0x7f07001d
 			public const int button_material_dark = 2131165213;
 			
@@ -1047,6 +1059,9 @@ namespace RiffSharer.Droid
 			
 			// aapt resource value: 0x7f070003
 			public const int cardview_shadow_start_color = 2131165187;
+			
+			// aapt resource value: 0x7f070042
+			public const int dark = 2131165250;
 			
 			// aapt resource value: 0x7f07001f
 			public const int dim_foreground_disabled_material_dark = 2131165215;
@@ -1092,6 +1107,9 @@ namespace RiffSharer.Droid
 			
 			// aapt resource value: 0x7f070028
 			public const int link_text_material_light = 2131165224;
+			
+			// aapt resource value: 0x7f070040
+			public const int main = 2131165248;
 			
 			// aapt resource value: 0x7f070029
 			public const int material_blue_grey_800 = 2131165225;
@@ -1168,17 +1186,20 @@ namespace RiffSharer.Droid
 			// aapt resource value: 0x7f07003d
 			public const int switch_thumb_disabled_material_light = 2131165245;
 			
-			// aapt resource value: 0x7f070049
-			public const int switch_thumb_material_dark = 2131165257;
+			// aapt resource value: 0x7f070050
+			public const int switch_thumb_material_dark = 2131165264;
 			
-			// aapt resource value: 0x7f07004a
-			public const int switch_thumb_material_light = 2131165258;
+			// aapt resource value: 0x7f070051
+			public const int switch_thumb_material_light = 2131165265;
 			
 			// aapt resource value: 0x7f07003e
 			public const int switch_thumb_normal_material_dark = 2131165246;
 			
 			// aapt resource value: 0x7f07003f
 			public const int switch_thumb_normal_material_light = 2131165247;
+			
+			// aapt resource value: 0x7f070046
+			public const int text = 2131165254;
 			
 			static Color()
 			{
@@ -2245,58 +2266,61 @@ namespace RiffSharer.Droid
 			public const int design_navigation_menu = 2130903069;
 			
 			// aapt resource value: 0x7f03001e
-			public const int HomeFragment = 2130903070;
+			public const int DrawerItem = 2130903070;
 			
 			// aapt resource value: 0x7f03001f
-			public const int layout_snackbar = 2130903071;
+			public const int HomeFragment = 2130903071;
 			
 			// aapt resource value: 0x7f030020
-			public const int layout_snackbar_include = 2130903072;
+			public const int layout_snackbar = 2130903072;
 			
 			// aapt resource value: 0x7f030021
-			public const int Main = 2130903073;
+			public const int layout_snackbar_include = 2130903073;
 			
 			// aapt resource value: 0x7f030022
-			public const int notification_media_action = 2130903074;
+			public const int Main = 2130903074;
 			
 			// aapt resource value: 0x7f030023
-			public const int notification_media_cancel_action = 2130903075;
+			public const int notification_media_action = 2130903075;
 			
 			// aapt resource value: 0x7f030024
-			public const int notification_template_big_media = 2130903076;
+			public const int notification_media_cancel_action = 2130903076;
 			
 			// aapt resource value: 0x7f030025
-			public const int notification_template_big_media_narrow = 2130903077;
+			public const int notification_template_big_media = 2130903077;
 			
 			// aapt resource value: 0x7f030026
-			public const int notification_template_lines = 2130903078;
+			public const int notification_template_big_media_narrow = 2130903078;
 			
 			// aapt resource value: 0x7f030027
-			public const int notification_template_media = 2130903079;
+			public const int notification_template_lines = 2130903079;
 			
 			// aapt resource value: 0x7f030028
-			public const int notification_template_part_chronometer = 2130903080;
+			public const int notification_template_media = 2130903080;
 			
 			// aapt resource value: 0x7f030029
-			public const int notification_template_part_time = 2130903081;
+			public const int notification_template_part_chronometer = 2130903081;
 			
 			// aapt resource value: 0x7f03002a
-			public const int ProfileFragment = 2130903082;
+			public const int notification_template_part_time = 2130903082;
 			
 			// aapt resource value: 0x7f03002b
-			public const int RecordAudioFragment = 2130903083;
+			public const int ProfileFragment = 2130903083;
 			
 			// aapt resource value: 0x7f03002c
-			public const int select_dialog_item_material = 2130903084;
+			public const int RecordAudioFragment = 2130903084;
 			
 			// aapt resource value: 0x7f03002d
-			public const int select_dialog_multichoice_material = 2130903085;
+			public const int select_dialog_item_material = 2130903085;
 			
 			// aapt resource value: 0x7f03002e
-			public const int select_dialog_singlechoice_material = 2130903086;
+			public const int select_dialog_multichoice_material = 2130903086;
 			
 			// aapt resource value: 0x7f03002f
-			public const int support_simple_spinner_dropdown_item = 2130903087;
+			public const int select_dialog_singlechoice_material = 2130903087;
+			
+			// aapt resource value: 0x7f030030
+			public const int support_simple_spinner_dropdown_item = 2130903088;
 			
 			static Layout()
 			{
@@ -3083,6 +3107,9 @@ namespace RiffSharer.Droid
 			
 			// aapt resource value: 0x7f0800e1
 			public const int TextAppearance_Widget_AppCompat_Toolbar_Title = 2131230945;
+			
+			// aapt resource value: 0x7f080138
+			public const int TextLabel = 2131231032;
 			
 			// aapt resource value: 0x7f0800e2
 			public const int Theme_AppCompat = 2131230946;

@@ -101,7 +101,7 @@ namespace RiffSharer.Droid
         {
             _drawerList = Resources.GetStringArray(Resource.Array.drawer_list);
 
-            _drawerAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, _drawerList);
+            _drawerAdapter = new ArrayAdapter<string>(this, Resource.Layout.DrawerItem, _drawerList);
             _drawerView.Adapter = _drawerAdapter;
             _drawerView.ItemClick += MenuListView_ItemClick;
 

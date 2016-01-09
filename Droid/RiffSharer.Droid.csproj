@@ -140,6 +140,8 @@
     <AndroidResource Include="Resources\drawable\record.png" />
     <AndroidResource Include="Resources\drawable\stop.png" />
     <AndroidResource Include="Resources\menu\ActionMenu.xml" />
+    <AndroidResource Include="Resources\values\Colors.xml" />
+    <AndroidResource Include="Resources\layout\DrawerItem.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Insights.1.10.6\build\MonoAndroid10\Xamarin.Insights.targets" Condition="Exists('..\packages\Xamarin.Insights.1.10.6\build\MonoAndroid10\Xamarin.Insights.targets')" />

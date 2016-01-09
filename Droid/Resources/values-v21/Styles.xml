@@ -10,5 +10,8 @@
 		<item name="android:windowAllowReturnTransitionOverlap">true</item>
 		<item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
 		<item name="android:windowSharedElementExitTransition">@android:transition/move</item>
+		<item name="android:windowBackground">@color/background</item>
+		<item name="android:colorButtonNormal">@color/button</item>
+		<!--		<item name="android:colorButtonDisabled">@color/dark</item>-->
 	</style>
 </resources>
