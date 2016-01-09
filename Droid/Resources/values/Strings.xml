@@ -27,4 +27,7 @@
 	<string name="email_does_not_match">Email does not match</string>
 	<string name="strong_password_is_required">The password must have a lower case letter, an upper case letter and a number (between 4 and 8 characters)</string>
 	<string name="email_must_be_valid">Email must be valid</string>
+	<string name="email_already_in_use">Email is already in use</string>
+	<string name="user_name_already_in_use">User Name already in use</string>
+	<string name="user_name_or_password_is_incorrect">User Name or Password is Incorrect</string>
 </resources>

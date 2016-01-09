@@ -28,6 +28,8 @@ namespace RiffSharer.Droid
 		{
 			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.ApplicationName = global::RiffSharer.Droid.Resource.String.ApplicationName;
 			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.Hello = global::RiffSharer.Droid.Resource.String.Hello;
+			global::PCLCrypto.Resource.String.ApplicationName = global::RiffSharer.Droid.Resource.String.ApplicationName;
+			global::PCLCrypto.Resource.String.Hello = global::RiffSharer.Droid.Resource.String.Hello;
 			global::Supermortal.Common.Droid.Classes.Resource.String.ApplicationName = global::RiffSharer.Droid.Resource.String.ApplicationName;
 			global::Supermortal.Common.Droid.Classes.Resource.String.Hello = global::RiffSharer.Droid.Resource.String.Hello;
 			global::Supermortal.Common.Droid.Classes.Resource.String.library_name = global::RiffSharer.Droid.Resource.String.library_name;
@@ -2627,6 +2629,9 @@ namespace RiffSharer.Droid
 			// aapt resource value: 0x7f0a0022
 			public const int email_address = 2131361826;
 			
+			// aapt resource value: 0x7f0a002e
+			public const int email_already_in_use = 2131361838;
+			
 			// aapt resource value: 0x7f0a002b
 			public const int email_does_not_match = 2131361835;
 			
@@ -2675,8 +2680,14 @@ namespace RiffSharer.Droid
 			// aapt resource value: 0x7f0a001f
 			public const int user_name = 2131361823;
 			
+			// aapt resource value: 0x7f0a002f
+			public const int user_name_already_in_use = 2131361839;
+			
 			// aapt resource value: 0x7f0a0028
 			public const int user_name_is_required = 2131361832;
+			
+			// aapt resource value: 0x7f0a0030
+			public const int user_name_or_password_is_incorrect = 2131361840;
 			
 			static String()
 			{

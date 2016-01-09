@@ -21,6 +21,30 @@ namespace RiffSharer.Repositories.Abstract
             return DataSet.OrderBy(i => i.DateCreated).Skip((page - 1) * pageSize).Take(pageSize);
         }
 
+        public User FindByUsername(string userName)
+        {
+            userName = userName.ToLower();
+            return DataSet.SingleOrDefault(i => i.UserName.ToLower() == userName);
+        }
+
+        public User FindByEmail(string email)
+        {
+            email = email.ToLower();
+            return DataSet.SingleOrDefault(i => i.Email.ToLower() == email);
+        }
+
+        public bool CheckUsername(string userName)
+        {
+            userName = userName.ToLower();
+            return DataSet.Any(i => i.UserName.ToLower() == userName);
+        }
+
+        public bool CheckEmail(string email)
+        {
+            email = email.ToLower();
+            return DataSet.Any(i => i.Email.ToLower() == email);
+        }
+
         #endregion
 
         #region Abstract
