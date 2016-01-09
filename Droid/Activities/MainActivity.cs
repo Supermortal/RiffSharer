@@ -76,6 +76,7 @@ namespace RiffSharer.Droid
             IoCHelper.Instance.BindService<AAudioRepository, SQLiteAudioRepository>();
             IoCHelper.Instance.BindService<ISQLite, SQLite_Android>();
             IoCHelper.Instance.BindService<IAudioService, DefaultAudioService>();
+            IoCHelper.Instance.BindService<IUserService, DefaultUserService>();
         }
 
         private void SetViews()
@@ -148,6 +149,7 @@ namespace RiffSharer.Droid
             _fragments[Fragments.Home] = new HomeFragment();
             _fragments[Fragments.Profile] = new ProfileFragment();
             _fragments[Fragments.RecordAudio] = new RecordAudioFragment();
+            _fragments[Fragments.RegisterUser] = new RegisterUserFragment();
             _fragmentStack = new Stack<SupportFragment>();
         }
 
@@ -158,9 +160,11 @@ namespace RiffSharer.Droid
             tx.Add(Resource.Id.main, _fragments[Fragments.Home]);
             tx.Add(Resource.Id.main, _fragments[Fragments.Profile]);
             tx.Add(Resource.Id.main, _fragments[Fragments.RecordAudio]);
+            tx.Add(Resource.Id.main, _fragments[Fragments.RegisterUser]);
 
             tx.Hide(_fragments[Fragments.Profile]);
             tx.Hide(_fragments[Fragments.RecordAudio]);
+            tx.Hide(_fragments[Fragments.RegisterUser]);
 
             _currentFragment = _fragments[Fragments.Home];
 
@@ -211,6 +215,9 @@ namespace RiffSharer.Droid
                     break;
                 case 2:
                     ShowFragment(Fragments.RecordAudio);
+                    break;
+                case 3:
+                    ShowFragment(Fragments.RegisterUser);
                     break;
             }
 

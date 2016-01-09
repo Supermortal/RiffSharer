@@ -8,8 +8,23 @@
 		<item>Home</item>
 		<item>Profile</item>
 		<item>Record Audio</item>
+		<item>Register</item>
 	</string-array>
 	<string name="save">Save</string>
 	<string name="riff_name">Riff Name</string>
+	<string name="user_name">Display Name</string>
+	<string name="password">Password</string>
+	<string name="confirm_password">Confirm Password</string>
+	<string name="email_address">Email</string>
+	<string name="confirm_email_address">Confirm Email</string>
 	<string name="a_name_is_required">A Riff name is required</string>
+	<string name="submit">Submit</string>
+	<string name="register">Register</string>
+	<string name="email_is_required">Email is required</string>
+	<string name="user_name_is_required">User Name is required</string>
+	<string name="password_is_required">Password is required</string>
+	<string name="password_does_not_match">Password does not match</string>
+	<string name="email_does_not_match">Email does not match</string>
+	<string name="strong_password_is_required">The password must have a lower case letter, an upper case letter and a number (between 4 and 8 characters)</string>
+	<string name="email_must_be_valid">Email must be valid</string>
 </resources>

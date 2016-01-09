@@ -6,7 +6,8 @@ namespace RiffSharer.Droid
     {
         Home,
         Profile,
-        RecordAudio
+        RecordAudio,
+        RegisterUser
     }
 }
 
