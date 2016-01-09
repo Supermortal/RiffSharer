@@ -123,6 +123,7 @@
     <Folder Include="Resources\values\" />
     <Folder Include="Activities\" />
     <Folder Include="Concrete\" />
+    <Folder Include="Resources\color\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />
@@ -142,6 +143,8 @@
     <AndroidResource Include="Resources\menu\ActionMenu.xml" />
     <AndroidResource Include="Resources\values\Colors.xml" />
     <AndroidResource Include="Resources\layout\DrawerItem.axml" />
+    <AndroidResource Include="Resources\drawable\RaisedButton.xml" />
+    <AndroidResource Include="Resources\color\ButtonSelector.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Insights.1.10.6\build\MonoAndroid10\Xamarin.Insights.targets" Condition="Exists('..\packages\Xamarin.Insights.1.10.6\build\MonoAndroid10\Xamarin.Insights.targets')" />

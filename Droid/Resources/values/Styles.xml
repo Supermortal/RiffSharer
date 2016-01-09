@@ -8,7 +8,7 @@
 		<!--   theme UI controls like checkboxes and text fields -->
 		<item name="colorAccent">@color/accent</item>
 		<item name="drawerArrowStyle">@style/MyDrawerArrowStyle</item>
-		<item name="colorButtonNormal">@color/button</item>
+		<item name="colorButtonNormal">@color/ButtonSelector</item>
 		<!--		<item name="colorButtonDisabled">@color/dark</item>-->
 		<item name="android:textColorPrimary">@color/text</item>
 	</style>

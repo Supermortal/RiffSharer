@@ -1048,6 +1048,9 @@ namespace RiffSharer.Droid
 			// aapt resource value: 0x7f07001e
 			public const int button_material_light = 2131165214;
 			
+			// aapt resource value: 0x7f070050
+			public const int ButtonSelector = 2131165264;
+			
 			// aapt resource value: 0x7f070000
 			public const int cardview_dark_background = 2131165184;
 			
@@ -1186,11 +1189,11 @@ namespace RiffSharer.Droid
 			// aapt resource value: 0x7f07003d
 			public const int switch_thumb_disabled_material_light = 2131165245;
 			
-			// aapt resource value: 0x7f070050
-			public const int switch_thumb_material_dark = 2131165264;
-			
 			// aapt resource value: 0x7f070051
-			public const int switch_thumb_material_light = 2131165265;
+			public const int switch_thumb_material_dark = 2131165265;
+			
+			// aapt resource value: 0x7f070052
+			public const int switch_thumb_material_light = 2131165266;
 			
 			// aapt resource value: 0x7f07003e
 			public const int switch_thumb_normal_material_dark = 2131165246;
@@ -1707,8 +1710,8 @@ namespace RiffSharer.Droid
 			// aapt resource value: 0x7f02003c
 			public const int icon = 2130837564;
 			
-			// aapt resource value: 0x7f020042
-			public const int notification_template_icon_bg = 2130837570;
+			// aapt resource value: 0x7f020043
+			public const int notification_template_icon_bg = 2130837571;
 			
 			// aapt resource value: 0x7f02003d
 			public const int pause = 2130837565;
@@ -1717,13 +1720,16 @@ namespace RiffSharer.Droid
 			public const int play = 2130837566;
 			
 			// aapt resource value: 0x7f02003f
-			public const int record = 2130837567;
+			public const int RaisedButton = 2130837567;
 			
 			// aapt resource value: 0x7f020040
-			public const int snackbar_background = 2130837568;
+			public const int record = 2130837568;
 			
 			// aapt resource value: 0x7f020041
-			public const int stop = 2130837569;
+			public const int snackbar_background = 2130837569;
+			
+			// aapt resource value: 0x7f020042
+			public const int stop = 2130837570;
 			
 			static Drawable()
 			{
