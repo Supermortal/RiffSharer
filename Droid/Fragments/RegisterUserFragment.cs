@@ -165,7 +165,6 @@ namespace RiffSharer.Droid
                 try
                 {
                     user = _us.RegisterUser(email, userName, password);
-                    var u = _us.Login(email, userName, password);
                 }
                 catch (EmailAlreadyInUseException ex)
                 {

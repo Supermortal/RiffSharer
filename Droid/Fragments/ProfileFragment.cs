@@ -21,11 +21,7 @@ namespace RiffSharer.Droid
 
         }
 
-        public static Android.Support.V4.App.Fragment newInstance(Context context)
-        {
-            ProfileFragment busrouteFragment = new ProfileFragment();
-            return busrouteFragment;
-        }
+        #region Lifecycle
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -38,6 +34,18 @@ namespace RiffSharer.Droid
             ViewGroup root = (ViewGroup)inflater.Inflate(Resource.Layout.ProfileFragment, null);
             return root;
         }
+
+        #endregion
+
+        #region Static
+
+        public static Android.Support.V4.App.Fragment newInstance(Context context)
+        {
+            var busrouteFragment = new ProfileFragment();
+            return busrouteFragment;
+        }
+
+        #endregion
     }
 }
 

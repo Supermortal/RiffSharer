@@ -45,14 +45,16 @@ namespace RiffSharer.Services.Concrete
 
         public User Login(string email, string userName, string password)
         {
-            email = email.Trim();
-            userName = userName.Trim();
+            if (!string.IsNullOrWhiteSpace(email))
+                email = email.Trim();
+            if (!string.IsNullOrWhiteSpace(userName))
+                userName = userName.Trim();
             User user = null;
 
             if (!string.IsNullOrWhiteSpace(email))
                 user = _ur.FindByEmail(email);
 
-            if (user == null && !string.IsNullOrWhiteSpace(userName))
+            if (user == null && !string.IsNullOrEmpty(userName))
                 user = _ur.FindByUsername(userName);
 
             if (user == null)

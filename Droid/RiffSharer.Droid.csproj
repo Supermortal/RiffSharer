@@ -117,6 +117,7 @@
     <Compile Include="Fragments\RecordAudioFragment.cs" />
     <Compile Include="Concrete\SQLite_Android.cs" />
     <Compile Include="Fragments\RegisterUserFragment.cs" />
+    <Compile Include="Fragments\LoginFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -153,6 +154,7 @@
     <AndroidResource Include="Resources\drawable\RaisedButton.xml" />
     <AndroidResource Include="Resources\color\ButtonSelector.xml" />
     <AndroidResource Include="Resources\layout\RegisterUserFragment.axml" />
+    <AndroidResource Include="Resources\layout\LoginFragment.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Insights.1.10.6\build\MonoAndroid10\Xamarin.Insights.targets" Condition="Exists('..\packages\Xamarin.Insights.1.10.6\build\MonoAndroid10\Xamarin.Insights.targets')" />

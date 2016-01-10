@@ -150,6 +150,7 @@ namespace RiffSharer.Droid
             _fragments[Fragments.Profile] = new ProfileFragment();
             _fragments[Fragments.RecordAudio] = new RecordAudioFragment();
             _fragments[Fragments.RegisterUser] = new RegisterUserFragment();
+            _fragments[Fragments.Login] = new LoginFragment();
             _fragmentStack = new Stack<SupportFragment>();
         }
 
@@ -161,10 +162,12 @@ namespace RiffSharer.Droid
             tx.Add(Resource.Id.main, _fragments[Fragments.Profile]);
             tx.Add(Resource.Id.main, _fragments[Fragments.RecordAudio]);
             tx.Add(Resource.Id.main, _fragments[Fragments.RegisterUser]);
+            tx.Add(Resource.Id.main, _fragments[Fragments.Login]);
 
             tx.Hide(_fragments[Fragments.Profile]);
             tx.Hide(_fragments[Fragments.RecordAudio]);
             tx.Hide(_fragments[Fragments.RegisterUser]);
+            tx.Hide(_fragments[Fragments.Login]);
 
             _currentFragment = _fragments[Fragments.Home];
 
@@ -218,6 +221,9 @@ namespace RiffSharer.Droid
                     break;
                 case 3:
                     ShowFragment(Fragments.RegisterUser);
+                    break;
+                case 4:
+                    ShowFragment(Fragments.Login);
                     break;
             }
 
