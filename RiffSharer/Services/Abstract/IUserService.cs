@@ -8,7 +8,9 @@ namespace RiffSharer.Services.Abstract
     {
         User RegisterUser(string email, string userName, string password);
 
-        User Login(string email, string userName, string password);
+        User Login(string email, string userName, string password, bool rememberMe);
+
+        User GetSavedUser();
     }
 }
 

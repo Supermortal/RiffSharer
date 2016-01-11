@@ -77,6 +77,7 @@ namespace RiffSharer.Droid
             IoCHelper.Instance.BindService<ISQLite, SQLite_Android>();
             IoCHelper.Instance.BindService<IAudioService, DefaultAudioService>();
             IoCHelper.Instance.BindService<IUserService, DefaultUserService>();
+            IoCHelper.Instance.BindService<ASavedUserRepository, SQLiteSavedUserRepository>();
         }
 
         private void SetViews()

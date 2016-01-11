@@ -17,6 +17,7 @@ using Supermortal.Common.PCL.Helpers;
 using Supermortal.Common.PCL.Exceptions;
 
 using RiffSharer.Services.Abstract;
+using RiffSharer.Models;
 
 namespace RiffSharer.Droid
 {

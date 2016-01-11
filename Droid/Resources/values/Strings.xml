@@ -31,4 +31,5 @@
 	<string name="email_already_in_use">Email is already in use</string>
 	<string name="user_name_already_in_use">User Name already in use</string>
 	<string name="user_name_or_password_is_incorrect">User Name or Password is Incorrect</string>
+	<string name="remember_me">Remember Me</string>
 </resources>

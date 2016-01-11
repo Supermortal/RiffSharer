@@ -16,27 +16,24 @@ using Supermortal.Common.PCL.Helpers;
 using Supermortal.Common.PCL.Exceptions;
 
 using RiffSharer.Services.Abstract;
+using RiffSharer.Models;
+using RiffSharer.Helpers;
 
 namespace RiffSharer.Droid
 {
     public class LoginFragment : Android.Support.V4.App.Fragment
     {
 
-        private readonly IUserService _us;
+        //        private readonly IUserService _us;
 
         private EditText _email;
         private EditText _password;
         private Button _submit;
+        private CheckBox _rememberMe;
 
         public LoginFragment()
-            : this(IoCHelper.Instance.GetService<IUserService>())
         {
             
-        }
-
-        public LoginFragment(IUserService us)
-        {
-            _us = us;
         }
 
         #region Lifecycle
@@ -92,6 +89,7 @@ namespace RiffSharer.Droid
             _email = Activity.FindViewById<EditText>(Resource.Id.loginEmail);
             _password = Activity.FindViewById<EditText>(Resource.Id.loginPassword);
             _submit = Activity.FindViewById<Button>(Resource.Id.loginSubmit);
+            _rememberMe = Activity.FindViewById<CheckBox>(Resource.Id.rememberMe);
         }
 
         private void SetHandlers()
@@ -105,7 +103,6 @@ namespace RiffSharer.Droid
 
         protected void Click_Submit(object sender, EventArgs e)
         {
-            User user = null;
             var email = string.Empty;
             var password = string.Empty;
 
@@ -115,7 +112,7 @@ namespace RiffSharer.Droid
             {
                 try
                 {
-                    user = _us.Login(email, null, password);
+                    UserHelper.Login(email, password, _rememberMe.Checked);
                 }
                 catch (Exception ex)
                 {

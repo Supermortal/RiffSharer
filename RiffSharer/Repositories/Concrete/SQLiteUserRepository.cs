@@ -7,6 +7,7 @@ using Supermortal.Common.PCL.Abstract;
 using Supermortal.Common.PCL.Helpers;
 
 using RiffSharer.Repositories.Abstract;
+using RiffSharer.Models;
 
 namespace RiffSharer
 {
