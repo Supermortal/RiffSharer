@@ -24,7 +24,7 @@ namespace RiffSharer.Repositories.Concrete
         {
             _sqlLite = sqlLite;
             //TESTING
-            _sqlLite.DeleteDatabase();
+//            _sqlLite.DeleteDatabase();
             //TESTING
             CreateTable();
             DataSet = _sqlLite.GetConnection().Table<SavedUser>();
@@ -42,7 +42,7 @@ namespace RiffSharer.Repositories.Concrete
         {
             using (var conn = _sqlLite.GetConnection())
             {
-                var su = conn.Get<SavedUser>(SAVED_USER_ID);
+                var su = conn.Find<SavedUser>(SAVED_USER_ID);
 
                 if (su == null)
                 {
@@ -71,7 +71,7 @@ namespace RiffSharer.Repositories.Concrete
         {
             using (var conn = _sqlLite.GetConnection())
             {
-                var su = conn.Get<SavedUser>(SAVED_USER_ID);
+                var su = conn.Find<SavedUser>(SAVED_USER_ID);
                 conn.Delete<SavedUser>(SAVED_USER_ID);
                 return su;
             }

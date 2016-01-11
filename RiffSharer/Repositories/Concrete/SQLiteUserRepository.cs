@@ -25,7 +25,7 @@ namespace RiffSharer
         {
             _sqlLite = sqlLite;
             //TESTING
-            _sqlLite.DeleteDatabase();
+//            _sqlLite.DeleteDatabase();
             //TESTING
             CreateTable();
             DataSet = _sqlLite.GetConnection().Table<User>();

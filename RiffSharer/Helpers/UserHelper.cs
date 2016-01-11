@@ -58,7 +58,7 @@ namespace RiffSharer.Helpers
 
         private static User GetSavedUser()
         {
-            return _userService.GetSavedUser();
+            return UserService.GetSavedUser();
         }
 
         #endregion

@@ -30,6 +30,7 @@ namespace RiffSharer.Droid
         private EditText _password;
         private Button _submit;
         private CheckBox _rememberMe;
+        private Button _register;
 
         public LoginFragment()
         {
@@ -90,11 +91,13 @@ namespace RiffSharer.Droid
             _password = Activity.FindViewById<EditText>(Resource.Id.loginPassword);
             _submit = Activity.FindViewById<Button>(Resource.Id.loginSubmit);
             _rememberMe = Activity.FindViewById<CheckBox>(Resource.Id.rememberMe);
+            _register = Activity.FindViewById<Button>(Resource.Id.register);
         }
 
         private void SetHandlers()
         {
             _submit.Click += Click_Submit;
+            _register.Click += Click_Register;
         }
 
         #endregion
@@ -113,6 +116,8 @@ namespace RiffSharer.Droid
                 try
                 {
                     UserHelper.Login(email, password, _rememberMe.Checked);
+                    if (UserHelper.CurrentUser != null)
+                        ((MainActivity)Activity).ShowFragment(Fragments.Home);
                 }
                 catch (Exception ex)
                 {
@@ -120,6 +125,11 @@ namespace RiffSharer.Droid
                         _email.Error = Activity.Resources.GetString(Resource.String.user_name_or_password_is_incorrect);
                 }
             }
+        }
+
+        protected void Click_Register(object sender, EventArgs e)
+        {
+            ((MainActivity)Activity).ShowFragment(Fragments.RegisterUser);
         }
 
         #endregion

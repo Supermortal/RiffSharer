@@ -18,13 +18,12 @@ using Supermortal.Common.PCL.Exceptions;
 
 using RiffSharer.Services.Abstract;
 using RiffSharer.Models;
+using RiffSharer.Helpers;
 
 namespace RiffSharer.Droid
 {
     public class RegisterUserFragment : Android.Support.V4.App.Fragment
     {
-
-        private readonly IUserService _us;
 
         private EditText _email;
         private EditText _confirmEmail;
@@ -34,14 +33,8 @@ namespace RiffSharer.Droid
         private Button _submit;
 
         public RegisterUserFragment()
-            : this(IoCHelper.Instance.GetService<IUserService>())
         {
             
-        }
-
-        public RegisterUserFragment(IUserService us)
-        {
-            _us = us;
         }
 
         #region Lifecycle
@@ -159,13 +152,14 @@ namespace RiffSharer.Droid
 
             if (Validate(ref email, ref userName, ref password))
             {
-                User user = null;
                 _email.Error = null;
                 _userName.Error = null;
 
                 try
                 {
-                    user = _us.RegisterUser(email, userName, password);
+                    UserHelper.RegisterUser(email, userName, password, true);
+                    if (UserHelper.CurrentUser != null)
+                        ((MainActivity)Activity).ShowFragment(Fragments.Home);
                 }
                 catch (EmailAlreadyInUseException ex)
                 {

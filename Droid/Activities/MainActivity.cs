@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using SupportToolbar = Android.Support.V7.Widget.Toolbar;
+using SupportFragment = Android.Support.V4.App.Fragment;
+
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -9,17 +12,17 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Android.Support.V4.Widget;
-using RiffSharer.Models;
+
 using Supermortal.Common.PCL.Helpers;
 using Supermortal.Common.PCL.Concrete;
 using Supermortal.Common.PCL.Abstract;
-using RiffSharer;
+
+using RiffSharer.Models;
+using RiffSharer.Helpers;
 using RiffSharer.Repositories.Abstract;
 using RiffSharer.Repositories.Concrete;
 using RiffSharer.Services.Abstract;
 using RiffSharer.Services.Concrete;
-using SupportToolbar = Android.Support.V7.Widget.Toolbar;
-using SupportFragment = Android.Support.V4.App.Fragment;
 
 namespace RiffSharer.Droid
 {
@@ -74,10 +77,10 @@ namespace RiffSharer.Droid
 
             IoCHelper.Instance.BindService<AUserRepository, SQLiteUserRepository>();
             IoCHelper.Instance.BindService<AAudioRepository, SQLiteAudioRepository>();
+            IoCHelper.Instance.BindService<ASavedUserRepository, SQLiteSavedUserRepository>();
             IoCHelper.Instance.BindService<ISQLite, SQLite_Android>();
             IoCHelper.Instance.BindService<IAudioService, DefaultAudioService>();
             IoCHelper.Instance.BindService<IUserService, DefaultUserService>();
-            IoCHelper.Instance.BindService<ASavedUserRepository, SQLiteSavedUserRepository>();
         }
 
         private void SetViews()
@@ -121,8 +124,11 @@ namespace RiffSharer.Droid
             _drawerToggle.SyncState();
         }
 
-        private void ShowFragment(Fragments fragmentEnum)
+        public void ShowFragment(Fragments fragmentEnum)
         {
+            if (UserHelper.CurrentUser == null && fragmentEnum != Fragments.Login && fragmentEnum != Fragments.RegisterUser)
+                return;
+
             var fragment = _fragments[fragmentEnum];
 
             if (fragment.IsVisible)
@@ -168,9 +174,17 @@ namespace RiffSharer.Droid
             tx.Hide(_fragments[Fragments.Profile]);
             tx.Hide(_fragments[Fragments.RecordAudio]);
             tx.Hide(_fragments[Fragments.RegisterUser]);
-            tx.Hide(_fragments[Fragments.Login]);
 
-            _currentFragment = _fragments[Fragments.Home];
+            if (UserHelper.CurrentUser == null)
+            {
+                tx.Hide(_fragments[Fragments.Home]);
+                _currentFragment = _fragments[Fragments.Login];
+            }
+            else
+            {
+                tx.Hide(_fragments[Fragments.Login]);
+                _currentFragment = _fragments[Fragments.Home];
+            }
 
             tx.Commit();
         }

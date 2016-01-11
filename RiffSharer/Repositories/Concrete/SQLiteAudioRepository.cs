@@ -22,7 +22,7 @@ namespace RiffSharer.Repositories.Concrete
         {
             _sqlLite = sqlLite;
             //TESTING
-            _sqlLite.DeleteDatabase();
+            DropTable();
             //TESTING
             CreateTable();
             DataSet = _sqlLite.GetConnection().Table<Audio>();
@@ -33,6 +33,14 @@ namespace RiffSharer.Repositories.Concrete
             using (var conn = _sqlLite.GetConnection())
             {
                 conn.CreateTable<Audio>();
+            }
+        }
+
+        public void DropTable()
+        {
+            using (var conn = _sqlLite.GetConnection())
+            {
+                conn.DropTable<Audio>();
             }
         }
 
