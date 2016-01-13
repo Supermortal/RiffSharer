@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using Supermortal.Common.PCL.Enums;
 
@@ -15,9 +16,9 @@ namespace RiffSharer.Services.Abstract
 
         Audio GetAudio(string audioId);
 
-        IEnumerable<Audio> GetAudiosForUser(string userId, int page, int pageSize);
+        Task<IEnumerable<Audio>> GetAudiosForUser(string userId, int page, int pageSize);
 
-        int GetAudioCountForUser(string userId);
+        Task<int> GetAudioCountForUser(string userId);
     }
 }
 

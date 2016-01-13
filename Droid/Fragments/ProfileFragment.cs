@@ -47,11 +47,11 @@ namespace RiffSharer.Droid
 
         #region Lifecycle
 
-        public override void OnCreate(Bundle savedInstanceState)
+        public async override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            var success = GetAudios();
+            var success = await GetAudios().ConfigureAwait(false);
 
             if (!success)
             {
@@ -113,14 +113,14 @@ namespace RiffSharer.Droid
 //            _countText.Text = (_serverListSize == null) ? "0" : _serverListSize.ToString();
         }
 
-        private bool GetAudios()
+        private async Task<bool> GetAudios()
         {
-            _serverListCount = _as.GetAudioCountForUser("a1d9be8f-0b1c-4663-aecd-a9d76e11c124");
+            _serverListCount = await _as.GetAudioCountForUser("a1d9be8f-0b1c-4663-aecd-a9d76e11c124").ConfigureAwait(false);
 
 //            if (_serverListCount == null)
 //                return false;
 
-            var audios = _as.GetAudiosForUser("a1d9be8f-0b1c-4663-aecd-a9d76e11c124", 1, 10);
+            var audios = await _as.GetAudiosForUser("a1d9be8f-0b1c-4663-aecd-a9d76e11c124", 1, 10).ConfigureAwait(false);
 
             if (audios == null)
                 return false;

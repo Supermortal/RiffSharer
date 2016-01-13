@@ -28,7 +28,7 @@ namespace RiffSharer.Droid.Adapters
 
         public async override Task<bool> OnLoadMore(int page, int totalItemsCount)
         {
-            var list = _as.GetAudiosForUser("a1d9be8f-0b1c-4663-aecd-a9d76e11c124", page, 10);
+            var list = await _as.GetAudiosForUser("a1d9be8f-0b1c-4663-aecd-a9d76e11c124", page, 10).ConfigureAwait(false);
             var audios = list.Select(i => new DroidAudio(i));
 
             _activity.RunOnUiThread(() =>
@@ -39,18 +39,7 @@ namespace RiffSharer.Droid.Adapters
                     }
                     _adapter.NotifyDataSetChanged();
                 });
-            //            List<Lead> l = await _sws.GetLeads(FrissonLeadsPullerGlobal.AuthToken, page, 10).ConfigureAwait(false);
-            //            var leads = l.Select(i => new DroidLead(i));
-            //
-            //            _activity.RunOnUiThread(() =>
-            //                {
-            //                    foreach (var lead in leads)
-            //                    {
-            //                        _adapter.DataList.Add(lead);
-            //                    }
-            //                    _adapter.NotifyDataSetChanged();
-            //                });
-            //
+
             return true;
         }
 
