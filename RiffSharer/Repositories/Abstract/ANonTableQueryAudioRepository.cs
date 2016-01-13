@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using Supermortal.Common.PCL.Abstract;
 
 using RiffSharer.Models;
 
 namespace RiffSharer.Repositories.Abstract
 {
-    public abstract class AAudioRepository : ATableQueryRepository<string, Audio>
+    public abstract class ANonTableQueryAudioRepository : ARepository<string, Audio>
     {
         #region Virtual
 

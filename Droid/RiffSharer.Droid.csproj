@@ -118,6 +118,11 @@
     <Compile Include="Concrete\SQLite_Android.cs" />
     <Compile Include="Fragments\RegisterUserFragment.cs" />
     <Compile Include="Fragments\LoginFragment.cs" />
+    <Compile Include="Adapters\EndlessScrollAdapter.cs" />
+    <Compile Include="Adapters\EndlessScrollListener.cs" />
+    <Compile Include="Adapters\AudioListAdapter.cs" />
+    <Compile Include="Adapters\AudioScrollListener.cs" />
+    <Compile Include="Models\DroidAudio.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -132,6 +137,8 @@
     <Folder Include="Activities\" />
     <Folder Include="Concrete\" />
     <Folder Include="Resources\color\" />
+    <Folder Include="Adapters\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />
@@ -155,6 +162,9 @@
     <AndroidResource Include="Resources\color\ButtonSelector.xml" />
     <AndroidResource Include="Resources\layout\RegisterUserFragment.axml" />
     <AndroidResource Include="Resources\layout\LoginFragment.axml" />
+    <AndroidResource Include="Resources\drawable\music.png" />
+    <AndroidResource Include="Resources\values\Dimens.xml" />
+    <AndroidResource Include="Resources\layout\AudioListItem.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Insights.1.10.6\build\MonoAndroid10\Xamarin.Insights.targets" Condition="Exists('..\packages\Xamarin.Insights.1.10.6\build\MonoAndroid10\Xamarin.Insights.targets')" />

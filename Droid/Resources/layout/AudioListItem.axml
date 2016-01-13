@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/ListCardView"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        card_view:cardCornerRadius="4dp">
+        <LinearLayout
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:textSize="25dp"
+                android:text="Test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/LeadListItemTitleText" />
+            <TextView
+                android:text="Test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/LeadListItemIPAddressText" />
+            <TextView
+                android:text="Test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/LeadListItemDateCreatedText" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>
