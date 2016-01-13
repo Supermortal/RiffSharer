@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 using Supermortal.Common.PCL.Helpers;
 using Supermortal.Common.PCL.Enums;
@@ -13,15 +15,17 @@ namespace RiffSharer.Services.Concrete
     {
 
         private readonly AAudioRepository _ar;
+        private readonly ANonTableQueryAudioRepository _nar;
 
         public DefaultAudioService()
-            : this(IoCHelper.Instance.GetService<AAudioRepository>())
+            : this(IoCHelper.Instance.GetService<AAudioRepository>(), IoCHelper.Instance.GetService<ANonTableQueryAudioRepository>())
         {
         }
 
-        public DefaultAudioService(AAudioRepository ar)
+        public DefaultAudioService(AAudioRepository ar, ANonTableQueryAudioRepository nar)
         {
             _ar = ar;
+            _nar = nar;
         }
 
         public Audio SaveAudio(string name, AudioFormat audioFormat, ChannelConfiguration channelConfiguration, int sampleRate, byte[] data)
@@ -45,6 +49,16 @@ namespace RiffSharer.Services.Concrete
         public Audio GetAudio(string audioId)
         {
             return _ar.Get(audioId);
+        }
+
+        public IEnumerable<Audio> GetAudiosForUser(string userId, int page, int pageSize)
+        {
+            return _nar.GetAllForUserPaged(userId, page, pageSize).AsEnumerable();
+        }
+
+        public int GetAudioCountForUser(string userId)
+        {
+            return _nar.GetCountForUser(userId);
         }
     }
 }

@@ -26,6 +26,11 @@ namespace RiffSharer.Droid.Models
 
         public string UserID { get; set; }
 
+        public DroidAudio(Audio a)
+        {
+            UpdateModel(a);
+        }
+
         #region Methods
 
         public void UpdateModel(Audio a)
@@ -66,6 +71,20 @@ namespace RiffSharer.Droid.Models
         public void SetChannelConfiguration(ChannelConfiguration cc)
         {
             ChannelConfigurationInt = (int)cc;
+        }
+
+        public Audio ToAudio()
+        {
+            var a = new Audio();
+
+            a.LocalPath = LocalPath;
+            a.Name = Name;
+            a.SetAudioFormat(GetAudioFormat());
+            a.SetChannelConfiguration(GetChannelConfiguration());
+            a.SampleRate = SampleRate;
+            a.Data = Data;
+
+            return a;
         }
 
         #endregion

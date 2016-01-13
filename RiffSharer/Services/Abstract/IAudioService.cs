@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 using Supermortal.Common.PCL.Enums;
 
@@ -13,6 +14,10 @@ namespace RiffSharer.Services.Abstract
         Audio SaveAudio(string name, string localPath);
 
         Audio GetAudio(string audioId);
+
+        IEnumerable<Audio> GetAudiosForUser(string userId, int page, int pageSize);
+
+        int GetAudioCountForUser(string userId);
     }
 }
 

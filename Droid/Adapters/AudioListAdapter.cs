@@ -14,8 +14,8 @@ namespace RiffSharer.Droid.Adapters
     public class AudioListAdapter : EndlessScrollAdapter<DroidAudio>
     {
 
-        public AudioListAdapter(Activity activity, List<DroidAudio> list, int progressLayoutId)
-            : base(activity, list, progressLayoutId)
+        public AudioListAdapter(Activity activity, List<DroidAudio> list)
+            : base(activity, list, Resource.Layout.ListProgress)
         {
 
         }
