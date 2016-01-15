@@ -26,6 +26,8 @@ namespace RiffSharer.Droid.Models
 
         public string UserID { get; set; }
 
+        public int DurationSeconds { get; set; }
+
         public DroidAudio(Audio a)
         {
             UpdateModel(a);
@@ -41,6 +43,8 @@ namespace RiffSharer.Droid.Models
             ChannelConfigurationInt = a.ChannelConfigurationInt;
             SampleRate = a.SampleRate;
             Data = a.Data;
+            DurationSeconds = a.DurationSeconds;
+            DateCreated = a.DateCreated;
         }
 
         public AudioFormat GetAudioFormat()
@@ -83,6 +87,8 @@ namespace RiffSharer.Droid.Models
             a.SetChannelConfiguration(GetChannelConfiguration());
             a.SampleRate = SampleRate;
             a.Data = Data;
+            a.DurationSeconds = DurationSeconds;
+            a.DateCreated = DateCreated;
 
             return a;
         }

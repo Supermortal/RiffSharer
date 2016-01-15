@@ -27,6 +27,8 @@ namespace RiffSharer.Models
 
         public string UserID { get; set; }
 
+        public int DurationSeconds { get; set; }
+
         #region Methods
 
         public void UpdateModel(Audio a)
@@ -37,6 +39,7 @@ namespace RiffSharer.Models
             ChannelConfigurationInt = a.ChannelConfigurationInt;
             SampleRate = a.SampleRate;
             Data = a.Data;
+            DurationSeconds = a.DurationSeconds;
         }
 
         public AudioFormat GetAudioFormat()

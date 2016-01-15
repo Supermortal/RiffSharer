@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using Android.Widget;
 using Android.App;
 using Android.Views;
 using Android.Support.V7.Widget;
@@ -20,6 +21,22 @@ namespace RiffSharer.Droid.Adapters
 
         }
 
+        public override void OnBindViewHolder(Android.Support.V7.Widget.RecyclerView.ViewHolder holder, int position)
+        {
+            var h = (AudioViewHolder)holder;
+
+            if (position < DataList.Count)
+            {
+                var data = DataList[position];
+
+                h.Name.Text = data.Name;
+                h.Duration.Text = data.DurationSeconds.ToString();
+                h.DateCreated.Text = data.DateCreated.ToLongDateString();
+
+                //h.Thumbnail.SetImageResource(Resource.Drawable.music);
+            }
+        }
+
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
             var itemView = LayoutInflater.From(parent.Context).
@@ -27,29 +44,27 @@ namespace RiffSharer.Droid.Adapters
 
             return new AudioViewHolder(itemView);
         }
-
-        public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
-        {
-            
-        }
     }
 
     class AudioViewHolder : RecyclerView.ViewHolder
     {
 
-        //        public TextView Title { get; set; }
-        //
-        //        public TextView IPAddress { get; set; }
-        //
-        //        public TextView DateCreated { get; set; }
+        public TextView Name { get; set; }
+
+        public TextView Duration { get; set; }
+
+        public TextView DateCreated { get; set; }
+
+        public ImageView Thumbnail { get; set; }
 
 
         public AudioViewHolder(View itemView)
             : base(itemView)
         {
-//            Title = itemView.FindViewById<TextView>(Resource.Id.LeadListItemTitleText);
-//            IPAddress = itemView.FindViewById<TextView>(Resource.Id.LeadListItemIPAddressText);
-//            DateCreated = itemView.FindViewById<TextView>(Resource.Id.LeadListItemDateCreatedText);
+            Name = itemView.FindViewById<TextView>(Resource.Id.audioListItemName);
+            Duration = itemView.FindViewById<TextView>(Resource.Id.audioListItemDuration);
+            DateCreated = itemView.FindViewById<TextView>(Resource.Id.audioListItemDateCreated);
+            Thumbnail = itemView.FindViewById<ImageView>(Resource.Id.audioListItemImage);
         }
 
     }

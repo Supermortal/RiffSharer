@@ -9,6 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         card_view:cardCornerRadius="4dp">
+        <ImageView
+            android:id="@+id/audioListItemImage"
+            android:layout_width="10dp"
+            android:layout_height="10dp" />
         <LinearLayout
             android:padding="15dp"
             android:layout_width="match_parent"
@@ -19,17 +23,17 @@
                 android:text="Test"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/LeadListItemTitleText" />
+                android:id="@+id/audioListItemName" />
             <TextView
                 android:text="Test"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/LeadListItemIPAddressText" />
+                android:id="@+id/audioListItemDateCreated" />
             <TextView
                 android:text="Test"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/LeadListItemDateCreatedText" />
+                android:id="@+id/audioListItemDuration" />
         </LinearLayout>
     </android.support.v7.widget.CardView>
 </LinearLayout>

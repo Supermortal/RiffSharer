@@ -61,6 +61,11 @@ namespace RiffSharer.Helpers
             return UserService.GetSavedUser();
         }
 
+        public static void Logout()
+        {
+            CurrentUser = null;
+        }
+
         #endregion
     }
 }

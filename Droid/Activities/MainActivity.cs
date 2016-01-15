@@ -132,10 +132,10 @@ namespace RiffSharer.Droid
 
             var fragment = _fragments[fragmentEnum];
 
-            if (fragment.IsVisible)
-            {
-                return;
-            }
+//            if (fragment.IsVisible)
+//            {
+//                return;
+//            }
 
             var trans = SupportFragmentManager.BeginTransaction();
 
@@ -239,6 +239,10 @@ namespace RiffSharer.Droid
                     ShowFragment(Fragments.RegisterUser);
                     break;
                 case 4:
+                    ShowFragment(Fragments.Login);
+                    break;
+                case 5:
+                    UserHelper.Logout();
                     ShowFragment(Fragments.Login);
                     break;
             }

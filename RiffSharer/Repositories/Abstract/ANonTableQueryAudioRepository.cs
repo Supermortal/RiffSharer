@@ -34,7 +34,8 @@ namespace RiffSharer.Repositories.Abstract
 
         public int GetCountForUser(string userId)
         {
-            return DataSet.Count(i => i.UserID == userId);
+            //return DataSet.Count(i => i.UserID == userId);
+            return 1;
         }
 
         #endregion
