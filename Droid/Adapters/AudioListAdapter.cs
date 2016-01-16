@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using Android.Widget;
 using Android.App;
 using Android.Views;
 using Android.Support.V7.Widget;
+using Android.Graphics;
+
+using Supermortal.Common.Droid.Helpers;
 
 using RiffSharer.Models;
 
@@ -15,10 +19,12 @@ namespace RiffSharer.Droid.Adapters
     public class AudioListAdapter : EndlessScrollAdapter<DroidAudio>
     {
 
+        private Activity _activity;
+
         public AudioListAdapter(Activity activity, List<DroidAudio> list)
             : base(activity, list, Resource.Layout.ListProgress)
         {
-
+            _activity = activity;
         }
 
         public override void OnBindViewHolder(Android.Support.V7.Widget.RecyclerView.ViewHolder holder, int position)
@@ -33,7 +39,16 @@ namespace RiffSharer.Droid.Adapters
                 h.Duration.Text = data.DurationSeconds.ToString();
                 h.DateCreated.Text = data.DateCreated.ToLongDateString();
 
-                //h.Thumbnail.SetImageResource(Resource.Drawable.music);
+                (new TaskFactory()).StartNew(() =>
+                    {
+                        var bmp = BitmapHelper.LoadAndResizeBitmap(_activity.Resources, Resource.Drawable.music, 50, 50);
+
+                        _activity.RunOnUiThread(() =>
+                            {
+                                h.Thumbnail.SetImageBitmap(bmp);               
+                                bmp.Dispose();
+                            });
+                    });                        
             }
         }
 

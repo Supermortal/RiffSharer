@@ -36,7 +36,7 @@ namespace RiffSharer.Droid
         private string[] _drawerList;
         private ArrayAdapter _drawerAdapter;
         private ActionBarDrawerToggle _drawerToggle;
-        private Dictionary<Fragments, SupportFragment> _fragments = new Dictionary<Fragments, SupportFragment>();
+        //private Dictionary<Fragments, SupportFragment> _fragments = new Dictionary<Fragments, SupportFragment>();
         private Stack<SupportFragment> _fragmentStack;
         private SupportFragment _currentFragment = new SupportFragment();
 
@@ -49,7 +49,7 @@ namespace RiffSharer.Droid
             AddBindings();
 
             SetViews();
-            CreateFragments();
+            //CreateFragments();
             SetUpFragments();
             SetUpActionBar();
             SetUpNavigationDrawer();
@@ -130,7 +130,8 @@ namespace RiffSharer.Droid
             if (UserHelper.CurrentUser == null && fragmentEnum != Fragments.Login && fragmentEnum != Fragments.RegisterUser)
                 return;
 
-            var fragment = _fragments[fragmentEnum];
+            //var fragment = _fragments[fragmentEnum];
+            var fragment = CreateFragment(fragmentEnum);
 
 //            if (fragment.IsVisible)
 //            {
@@ -139,52 +140,83 @@ namespace RiffSharer.Droid
 
             var trans = SupportFragmentManager.BeginTransaction();
 
-            fragment.View.BringToFront();
-            _currentFragment.View.BringToFront();
+            trans.Replace(Resource.Id.main, fragment);
 
-            trans.Hide(_currentFragment);
-            trans.Show(fragment);
-
-            trans.AddToBackStack(null);
-            _fragmentStack.Push(_currentFragment);
+//            fragment.View.BringToFront();
+//            _currentFragment.View.BringToFront();
+//
+//            trans.Hide(_currentFragment);
+//            trans.Show(fragment);
+//
+//            trans.AddToBackStack(null);
+//            _fragmentStack.Push(_currentFragment);
             trans.Commit();
 
+            _currentFragment = null;
             _currentFragment = fragment;
         }
 
-        private void CreateFragments()
+        //        private void CreateFragments()
+        //        {
+        //            _fragments[Fragments.Home] = new HomeFragment();
+        //            _fragments[Fragments.Profile] = new ProfileFragment();
+        //            _fragments[Fragments.RecordAudio] = new RecordAudioFragment();
+        //            _fragments[Fragments.RegisterUser] = new RegisterUserFragment();
+        //            _fragments[Fragments.Login] = new LoginFragment();
+        //            _fragmentStack = new Stack<SupportFragment>();
+        //        }
+
+        private SupportFragment CreateFragment(Fragments fragmentEnum)
         {
-            _fragments[Fragments.Home] = new HomeFragment();
-            _fragments[Fragments.Profile] = new ProfileFragment();
-            _fragments[Fragments.RecordAudio] = new RecordAudioFragment();
-            _fragments[Fragments.RegisterUser] = new RegisterUserFragment();
-            _fragments[Fragments.Login] = new LoginFragment();
-            _fragmentStack = new Stack<SupportFragment>();
+            SupportFragment f = null;
+
+            switch (fragmentEnum)
+            {
+                case Fragments.Home:
+                    f = new HomeFragment();
+                    break;
+                case Fragments.Login:
+                    f = new LoginFragment();
+                    break;
+                case Fragments.Profile:
+                    f = new ProfileFragment();
+                    break;
+                case Fragments.RecordAudio:
+                    f = new RecordAudioFragment();
+                    break;
+                case Fragments.RegisterUser:
+                    f = new RegisterUserFragment();
+                    break;
+            }
+
+            return f;
         }
 
         private void SetUpFragments()
         {
             Android.Support.V4.App.FragmentTransaction tx = SupportFragmentManager.BeginTransaction();
 
-            tx.Add(Resource.Id.main, _fragments[Fragments.Home]);
-            tx.Add(Resource.Id.main, _fragments[Fragments.Profile]);
-            tx.Add(Resource.Id.main, _fragments[Fragments.RecordAudio]);
-            tx.Add(Resource.Id.main, _fragments[Fragments.RegisterUser]);
-            tx.Add(Resource.Id.main, _fragments[Fragments.Login]);
-
-            tx.Hide(_fragments[Fragments.Profile]);
-            tx.Hide(_fragments[Fragments.RecordAudio]);
-            tx.Hide(_fragments[Fragments.RegisterUser]);
+//            tx.Add(Resource.Id.main, _fragments[Fragments.Home]);
+//            tx.Add(Resource.Id.main, _fragments[Fragments.Profile]);
+//            tx.Add(Resource.Id.main, _fragments[Fragments.RecordAudio]);
+//            tx.Add(Resource.Id.main, _fragments[Fragments.RegisterUser]);
+//            tx.Add(Resource.Id.main, _fragments[Fragments.Login]);
+//
+//            tx.Hide(_fragments[Fragments.Profile]);
+//            tx.Hide(_fragments[Fragments.RecordAudio]);
+//            tx.Hide(_fragments[Fragments.RegisterUser]);
 
             if (UserHelper.CurrentUser == null)
             {
-                tx.Hide(_fragments[Fragments.Home]);
-                _currentFragment = _fragments[Fragments.Login];
+                tx.Add(Resource.Id.main, new LoginFragment());
+//                tx.Hide(_fragments[Fragments.Home]);
+//                _currentFragment = _fragments[Fragments.Login];
             }
             else
             {
-                tx.Hide(_fragments[Fragments.Login]);
-                _currentFragment = _fragments[Fragments.Home];
+                tx.Add(Resource.Id.main, new HomeFragment());
+//                tx.Hide(_fragments[Fragments.Login]);
+//                _currentFragment = _fragments[Fragments.Home];
             }
 
             tx.Commit();
