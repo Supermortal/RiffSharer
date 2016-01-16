@@ -5,9 +5,10 @@
     android:layout_height="fill_parent"
     android:minWidth="25px"
     android:minHeight="25px">
-    <Button
-        android:text="Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button1" />
+    <android.support.v7.widget.RecyclerView
+        android:padding="10dp"
+        android:id="@+id/homeAudioList"
+        android:scrollbars="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="175dp" />
 </LinearLayout>

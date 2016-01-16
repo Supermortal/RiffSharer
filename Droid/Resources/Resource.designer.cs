@@ -1962,9 +1962,6 @@ namespace RiffSharer.Droid
 			// aapt resource value: 0x7f090013
 			public const int bottom = 2131296275;
 			
-			// aapt resource value: 0x7f090075
-			public const int button1 = 2131296373;
-			
 			// aapt resource value: 0x7f090044
 			public const int buttonPanel = 2131296324;
 			
@@ -2078,6 +2075,9 @@ namespace RiffSharer.Droid
 			
 			// aapt resource value: 0x7f090028
 			public const int homeAsUp = 2131296296;
+			
+			// aapt resource value: 0x7f090075
+			public const int homeAudioList = 2131296373;
 			
 			// aapt resource value: 0x7f090042
 			public const int icon = 2131296322;

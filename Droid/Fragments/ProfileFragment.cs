@@ -103,14 +103,6 @@ namespace RiffSharer.Droid
             _adapter.ServerListSize = (int)_serverListCount;
             _audioList.AddOnScrollListener(new AudioScrollListener(_as, _adapter, Activity, _manager));
             _audioList.SetAdapter(_adapter);
-
-//            _adapter = new LeadsListAdapter(_activity, _leads);
-//            _adapter.ServerListSize = (int)_serverListSize;
-//            _list.AddOnScrollListener(new LeadsScrollListener(_sws, _adapter, _activity, _manager));
-//            _list.SetAdapter(_adapter);
-//
-//            _titleText.Text = _activity.GetString(Resource.String.total_count);
-//            _countText.Text = (_serverListSize == null) ? "0" : _serverListSize.ToString();
         }
 
         private async Task<bool> GetAudios()
