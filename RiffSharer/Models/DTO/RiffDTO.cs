@@ -17,6 +17,8 @@ namespace RiffSharer.Models
 
         public Audio Audio { get; set; }
 
+        public int DurationSeconds { get; set; }
+
         public RiffDTO()
         {
         }
@@ -34,6 +36,7 @@ namespace RiffSharer.Models
             UserID = r.UserID;
             Name = r.Name;
             DateCreated = r.DateCreated;
+            DurationSeconds = r.DurationSeconds;
         }
     }
 }

@@ -12,22 +12,20 @@ using RiffSharer.Models;
 
 namespace RiffSharer.Services.Concrete
 {
-    public class DefaultAudioService : IRiffService
+    public class DefaultRiffService : IRiffService
     {
 
         private readonly AAudioRepository _ar;
-        private readonly ANonTableQueryAudioRepository _nar;
         private readonly ARiffRepository _rr;
 
-        public DefaultAudioService()
-            : this(IoCHelper.Instance.GetService<AAudioRepository>(), IoCHelper.Instance.GetService<ANonTableQueryAudioRepository>(), IoCHelper.Instance.GetService<ARiffRepository>())
+        public DefaultRiffService()
+            : this(IoCHelper.Instance.GetService<AAudioRepository>(), IoCHelper.Instance.GetService<ARiffRepository>())
         {
         }
 
-        public DefaultAudioService(AAudioRepository ar, ANonTableQueryAudioRepository nar, ARiffRepository rr)
+        public DefaultRiffService(AAudioRepository ar, ARiffRepository rr)
         {
             _ar = ar;
-            _nar = nar;
             _rr = rr;
         }
 
@@ -68,12 +66,13 @@ namespace RiffSharer.Services.Concrete
 
         public async Task<IEnumerable<RiffDTO>> GetRiffsForUser(string userId, int page, int pageSize)
         {
-            return _rr.GetAllForUserPaged(userId, page, pageSize).Select(i => new RiffDTO(i));
+            var riffs = await _rr.GetAllForUserPaged(userId, page, pageSize);
+            return riffs.Select(i => new RiffDTO(i));
         }
 
         public async Task<int> GetRiffCountForUser(string userId)
         {
-            return _rr.GetCountForUser(userId);
+            return await _rr.GetCountForUser(userId).ConfigureAwait(false);
         }
     }
 }

@@ -17,11 +17,14 @@ namespace RiffSharer.Models
 
         public DateTime DateCreated { get; set; }
 
+        public int DurationSeconds { get; set; }
+
         public void UpdateModel(Riff r)
         {
             AudioID = r.AudioID;
             Name = r.Name;
             UserID = r.UserID;
+            DurationSeconds = r.DurationSeconds;
         }
     }
 }

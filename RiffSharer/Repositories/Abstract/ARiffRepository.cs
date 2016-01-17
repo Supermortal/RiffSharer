@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 using Supermortal.Common.PCL.Abstract;
 
@@ -22,17 +23,17 @@ namespace RiffSharer.Repositories.Abstract
             return DataSet.OrderBy(i => i.DateCreated).Skip((page - 1) * pageSize).Take(pageSize);
         }
 
-        public virtual IEnumerable<Riff> GetAllForUser(string userId)
+        public async virtual Task<IEnumerable<Riff>> GetAllForUser(string userId)
         {
             return DataSet.Where(i => i.UserID == userId);
         }
 
-        public virtual IEnumerable<Riff> GetAllForUserPaged(string userId, int page, int pageSize)
+        public async virtual Task<IEnumerable<Riff>> GetAllForUserPaged(string userId, int page, int pageSize)
         {
             return DataSet.OrderBy(i => i.DateCreated).Where(i => i.UserID == userId).Skip((page - 1) * pageSize).Take(pageSize);
         }
 
-        public virtual int GetCountForUser(string userId)
+        public async virtual Task<int> GetCountForUser(string userId)
         {
             return DataSet.Count(i => i.UserID == userId);
         }

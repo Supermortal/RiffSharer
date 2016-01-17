@@ -20,13 +20,7 @@ namespace RiffSharer.Droid.Models
 
         public Audio Audio { get; set; }
 
-        public int DurationSeconds
-        {
-            get
-            {
-                return Audio.DurationSeconds;
-            }
-        }
+        public int DurationSeconds { get; set; }
 
         public DroidRiff(Riff a)
         {
@@ -47,6 +41,7 @@ namespace RiffSharer.Droid.Models
             AudioID = a.AudioID;
             UserID = a.UserID;
             RiffID = a.RiffID;
+            DurationSeconds = a.DurationSeconds;
         }
 
         public void UpdateModel(RiffDTO a)
@@ -57,6 +52,7 @@ namespace RiffSharer.Droid.Models
             UserID = a.UserID;
             RiffID = a.RiffID;
             Audio = a.Audio;
+            DurationSeconds = a.DurationSeconds;
         }
 
         #endregion

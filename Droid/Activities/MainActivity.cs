@@ -77,9 +77,8 @@ namespace RiffSharer.Droid
             IoCHelper.Instance.BindService<AAudioRepository, SQLiteAudioRepository>();
             IoCHelper.Instance.BindService<ASavedUserRepository, SQLiteSavedUserRepository>();
             IoCHelper.Instance.BindService<ISQLite, SQLite_Android>();
-            IoCHelper.Instance.BindService<IRiffService, DefaultAudioService>();
+            IoCHelper.Instance.BindService<IRiffService, TestRiffService>();
             IoCHelper.Instance.BindService<IUserService, DefaultUserService>();
-            IoCHelper.Instance.BindService<ANonTableQueryAudioRepository, TestAudioRepository>();
             IoCHelper.Instance.BindService<ARiffRepository, SQLiteRiffRepository>();
         }
 
