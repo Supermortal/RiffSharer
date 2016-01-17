@@ -11,6 +11,7 @@
 		<item>Register</item>
 		<item>Login</item>
 		<item>Logout</item>
+		<item>Riff</item>
 	</string-array>
 	<string name="save">Save</string>
 	<string name="riff_name">Riff Name</string>

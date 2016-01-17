@@ -8,7 +8,8 @@ namespace RiffSharer.Droid
         Profile,
         RecordAudio,
         RegisterUser,
-        Login
+        Login,
+        Riff
     }
 }
 

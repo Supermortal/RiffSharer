@@ -123,6 +123,7 @@
     <Compile Include="Adapters\AudioListAdapter.cs" />
     <Compile Include="Adapters\AudioScrollListener.cs" />
     <Compile Include="Models\DroidAudio.cs" />
+    <Compile Include="Fragments\RiffFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -166,6 +167,7 @@
     <AndroidResource Include="Resources\values\Dimens.xml" />
     <AndroidResource Include="Resources\layout\AudioListItem.axml" />
     <AndroidResource Include="Resources\layout\ListProgress.axml" />
+    <AndroidResource Include="Resources\layout\RiffFragment.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Insights.1.10.6\build\MonoAndroid10\Xamarin.Insights.targets" Condition="Exists('..\packages\Xamarin.Insights.1.10.6\build\MonoAndroid10\Xamarin.Insights.targets')" />

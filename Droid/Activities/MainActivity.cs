@@ -36,7 +36,6 @@ namespace RiffSharer.Droid
         private string[] _drawerList;
         private ArrayAdapter _drawerAdapter;
         private ActionBarDrawerToggle _drawerToggle;
-        //private Dictionary<Fragments, SupportFragment> _fragments = new Dictionary<Fragments, SupportFragment>();
         private Stack<SupportFragment> _fragmentStack;
         private SupportFragment _currentFragment = new SupportFragment();
 
@@ -49,7 +48,6 @@ namespace RiffSharer.Droid
             AddBindings();
 
             SetViews();
-            //CreateFragments();
             SetUpFragments();
             SetUpActionBar();
             SetUpNavigationDrawer();
@@ -130,7 +128,6 @@ namespace RiffSharer.Droid
             if (UserHelper.CurrentUser == null && fragmentEnum != Fragments.Login && fragmentEnum != Fragments.RegisterUser)
                 return;
 
-            //var fragment = _fragments[fragmentEnum];
             var fragment = CreateFragment(fragmentEnum);
 
 //            if (fragment.IsVisible)
@@ -142,29 +139,11 @@ namespace RiffSharer.Droid
 
             trans.Replace(Resource.Id.main, fragment);
 
-//            fragment.View.BringToFront();
-//            _currentFragment.View.BringToFront();
-//
-//            trans.Hide(_currentFragment);
-//            trans.Show(fragment);
-//
-//            trans.AddToBackStack(null);
-//            _fragmentStack.Push(_currentFragment);
             trans.Commit();
 
             _currentFragment = null;
             _currentFragment = fragment;
         }
-
-        //        private void CreateFragments()
-        //        {
-        //            _fragments[Fragments.Home] = new HomeFragment();
-        //            _fragments[Fragments.Profile] = new ProfileFragment();
-        //            _fragments[Fragments.RecordAudio] = new RecordAudioFragment();
-        //            _fragments[Fragments.RegisterUser] = new RegisterUserFragment();
-        //            _fragments[Fragments.Login] = new LoginFragment();
-        //            _fragmentStack = new Stack<SupportFragment>();
-        //        }
 
         private SupportFragment CreateFragment(Fragments fragmentEnum)
         {
@@ -187,6 +166,9 @@ namespace RiffSharer.Droid
                 case Fragments.RegisterUser:
                     f = new RegisterUserFragment();
                     break;
+                case Fragments.Riff:
+                    f = new RiffFragment();
+                    break;
             }
 
             return f;
@@ -196,27 +178,13 @@ namespace RiffSharer.Droid
         {
             Android.Support.V4.App.FragmentTransaction tx = SupportFragmentManager.BeginTransaction();
 
-//            tx.Add(Resource.Id.main, _fragments[Fragments.Home]);
-//            tx.Add(Resource.Id.main, _fragments[Fragments.Profile]);
-//            tx.Add(Resource.Id.main, _fragments[Fragments.RecordAudio]);
-//            tx.Add(Resource.Id.main, _fragments[Fragments.RegisterUser]);
-//            tx.Add(Resource.Id.main, _fragments[Fragments.Login]);
-//
-//            tx.Hide(_fragments[Fragments.Profile]);
-//            tx.Hide(_fragments[Fragments.RecordAudio]);
-//            tx.Hide(_fragments[Fragments.RegisterUser]);
-
             if (UserHelper.CurrentUser == null)
             {
                 tx.Add(Resource.Id.main, new LoginFragment());
-//                tx.Hide(_fragments[Fragments.Home]);
-//                _currentFragment = _fragments[Fragments.Login];
             }
             else
             {
                 tx.Add(Resource.Id.main, new HomeFragment());
-//                tx.Hide(_fragments[Fragments.Login]);
-//                _currentFragment = _fragments[Fragments.Home];
             }
 
             tx.Commit();
@@ -277,9 +245,10 @@ namespace RiffSharer.Droid
                     UserHelper.Logout();
                     ShowFragment(Fragments.Login);
                     break;
+                case 6:
+                    ShowFragment(Fragments.Riff);
+                    break;
             }
-
-            //SupportFragmentManager.BeginTransaction().Replace(Resource.Id.main, fragment).Commit();
 
             _drawerLayout.CloseDrawers();
             _drawerToggle.SyncState();
