@@ -1881,9 +1881,6 @@ namespace RiffSharer.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f090069
-			public const int ListCardView = 2131296361;
-			
 			// aapt resource value: 0x7f090080
 			public const int action0 = 2131296384;
 			
@@ -1943,6 +1940,9 @@ namespace RiffSharer.Droid
 			
 			// aapt resource value: 0x7f090034
 			public const int always = 2131296308;
+			
+			// aapt resource value: 0x7f090069
+			public const int audioListCardView = 2131296361;
 			
 			// aapt resource value: 0x7f09006c
 			public const int audioListItemDateCreated = 2131296364;

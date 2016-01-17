@@ -119,8 +119,19 @@ namespace RiffSharer.Droid
         {           
             _adapter = new AudioListAdapter(Activity, _riffs);
             _adapter.ServerListSize = (int)_serverListCount;
+            _adapter.RiffClicked += RiffClicked_List;
+
             _audioList.AddOnScrollListener(new AudioScrollListener(_as, _adapter, Activity, _manager));
             _audioList.SetAdapter(_adapter);
+        }
+
+        #endregion
+
+        #region Events
+
+        private void RiffClicked_List(object sender, RiffClickedEventArgs e)
+        {
+            
         }
 
         #endregion

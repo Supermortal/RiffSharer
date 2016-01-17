@@ -51,7 +51,7 @@ namespace RiffSharer.Droid
         {
             base.OnCreate(savedInstanceState);
 
-            var success = await GetAudios().ConfigureAwait(false);
+            var success = await GetRiffs().ConfigureAwait(false);
 
             if (!success)
             {
@@ -101,11 +101,13 @@ namespace RiffSharer.Droid
         {           
             _adapter = new AudioListAdapter(Activity, _riffs);
             _adapter.ServerListSize = (int)_serverListCount;
+            _adapter.RiffClicked += RiffClicked_List;
+
             _audioList.AddOnScrollListener(new AudioScrollListener(_as, _adapter, Activity, _manager));
             _audioList.SetAdapter(_adapter);
         }
 
-        private async Task<bool> GetAudios()
+        private async Task<bool> GetRiffs()
         {
             _serverListCount = await _as.GetRiffCountForUser("a1d9be8f-0b1c-4663-aecd-a9d76e11c124").ConfigureAwait(false);
 
@@ -120,6 +122,15 @@ namespace RiffSharer.Droid
             _riffs = riffs.Select(i => new DroidRiff(i)).ToList();
 
             return true;
+        }
+
+        #endregion
+
+        #region Events
+
+        private void RiffClicked_List(object sender, RiffClickedEventArgs e)
+        {
+
         }
 
         #endregion

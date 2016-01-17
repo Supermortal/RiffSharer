@@ -16,15 +16,18 @@ using RiffSharer.Droid.Models;
 
 namespace RiffSharer.Droid.Adapters
 {
+
+    public delegate void RiffClickedEventHandler(object sender,RiffClickedEventArgs e);
+
     public class AudioListAdapter : EndlessScrollAdapter<DroidRiff>
     {
 
-        private Activity _activity;
+        public event RiffClickedEventHandler RiffClicked;
 
         public AudioListAdapter(Activity activity, List<DroidRiff> list)
             : base(activity, list, Resource.Layout.ListProgress)
         {
-            _activity = activity;
+
         }
 
         public override void OnBindViewHolder(Android.Support.V7.Widget.RecyclerView.ViewHolder holder, int position)
@@ -38,6 +41,12 @@ namespace RiffSharer.Droid.Adapters
                 h.Name.Text = data.Name;
                 h.Duration.Text = data.DurationSeconds.ToString();
                 h.DateCreated.Text = data.DateCreated.ToLongDateString();
+
+                h.MainView.Click += (object sender, EventArgs e) =>
+                {
+                    if (RiffClicked != null)
+                        RiffClicked(sender, new RiffClickedEventArgs() { RiffID = data.RiffID });
+                };
 
                 (new TaskFactory()).StartNew(() =>
                     {
@@ -72,6 +81,8 @@ namespace RiffSharer.Droid.Adapters
 
         public ImageView Thumbnail { get; set; }
 
+        public CardView MainView { get; set; }
+
 
         public AudioViewHolder(View itemView)
             : base(itemView)
@@ -80,8 +91,14 @@ namespace RiffSharer.Droid.Adapters
             Duration = itemView.FindViewById<TextView>(Resource.Id.audioListItemDuration);
             DateCreated = itemView.FindViewById<TextView>(Resource.Id.audioListItemDateCreated);
             Thumbnail = itemView.FindViewById<ImageView>(Resource.Id.audioListItemImage);
+            MainView = itemView.FindViewById<CardView>(Resource.Id.audioListCardView);
         }
 
+    }
+
+    public class RiffClickedEventArgs : EventArgs
+    {
+        public string RiffID { get; set; }
     }
 }
 
