@@ -18,13 +18,14 @@ using Supermortal.Common.PCL.Helpers;
 using Supermortal.Common.Droid.Helpers;
 
 using RiffSharer.Services.Abstract;
+using RiffSharer.Helpers;
 
 namespace RiffSharer.Droid
 {
     public class RecordAudioFragment : Android.Support.V4.App.Fragment
     {
 
-        private readonly IAudioService _as;
+        private readonly IRiffService _as;
 
         private Activity _activity;
         private AudioRecord _audioRecord;
@@ -45,12 +46,12 @@ namespace RiffSharer.Droid
         private ChannelIn _channelConfig;
 
         public RecordAudioFragment()
-            : this(IoCHelper.Instance.GetService<IAudioService>())
+            : this(IoCHelper.Instance.GetService<IRiffService>())
         {
             
         }
 
-        public RecordAudioFragment(IAudioService audioService)
+        public RecordAudioFragment(IRiffService audioService)
         {
             _as = audioService;
         }
@@ -223,7 +224,7 @@ namespace RiffSharer.Droid
 
             var audioFormat = AudioHelper.AndroidAudioFormatToAudioFormat(_audioFormat);
             var channelConfig = AudioHelper.AndroidChannelConfigurationToChannelConfiguration(_channelConfig);
-            _as.SaveAudio(name, audioFormat, channelConfig, _sampleAudioBitRate, data);
+            _as.SaveRiff(name, audioFormat, channelConfig, _sampleAudioBitRate, data, UserHelper.CurrentUser.UserID);
         }
 
         #endregion

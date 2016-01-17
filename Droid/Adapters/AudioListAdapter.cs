@@ -16,12 +16,12 @@ using RiffSharer.Droid.Models;
 
 namespace RiffSharer.Droid.Adapters
 {
-    public class AudioListAdapter : EndlessScrollAdapter<DroidAudio>
+    public class AudioListAdapter : EndlessScrollAdapter<DroidRiff>
     {
 
         private Activity _activity;
 
-        public AudioListAdapter(Activity activity, List<DroidAudio> list)
+        public AudioListAdapter(Activity activity, List<DroidRiff> list)
             : base(activity, list, Resource.Layout.ListProgress)
         {
             _activity = activity;

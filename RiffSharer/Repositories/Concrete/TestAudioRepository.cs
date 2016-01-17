@@ -23,8 +23,6 @@ namespace RiffSharer.Repositories.Concrete
                 var a = new Audio()
                 { 
                     AudioID = Guid.NewGuid().ToString(),
-                    UserID = TEST_USER_ID_GUID,
-                    Name = "TestRiff " + i,
                     DateCreated = DateTime.UtcNow,
                     SampleRate = 41000,
                     DurationSeconds = 60

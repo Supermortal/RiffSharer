@@ -26,22 +26,22 @@ namespace RiffSharer.Droid
     class HomeFragment : Android.Support.V4.App.Fragment
     {
 
-        private readonly IAudioService _as;
+        private readonly IRiffService _as;
 
         private RecyclerView _audioList;
 
         private AudioListAdapter _adapter;
         private int? _serverListCount = -1;
-        private List<DroidAudio> _audios;
+        private List<DroidRiff> _riffs;
         private LinearLayoutManager _manager;
 
         public HomeFragment()
-            : this(IoCHelper.Instance.GetService<IAudioService>())
+            : this(IoCHelper.Instance.GetService<IRiffService>())
         {
 
         }
 
-        public HomeFragment(IAudioService audioService)
+        public HomeFragment(IRiffService audioService)
         {
             _as = audioService;
         }
@@ -52,7 +52,7 @@ namespace RiffSharer.Droid
         {
             base.OnCreate(savedInstanceState);
 
-            var success = await GetAudios().ConfigureAwait(false);
+            var success = await GetRiffs().ConfigureAwait(false);
 
             if (!success)
             {
@@ -89,7 +89,7 @@ namespace RiffSharer.Droid
             _manager = new LinearLayoutManager(Activity, LinearLayoutManager.Horizontal, false);
             _audioList.SetLayoutManager(_manager);
 
-            if (_audios != null)
+            if (_riffs != null)
                 SetListAdapter();
         }
 
@@ -98,26 +98,26 @@ namespace RiffSharer.Droid
             
         }
 
-        private async Task<bool> GetAudios()
+        private async Task<bool> GetRiffs()
         {
-            _serverListCount = await _as.GetAudioCountForUser("a1d9be8f-0b1c-4663-aecd-a9d76e11c124").ConfigureAwait(false);
+            _serverListCount = await _as.GetRiffCountForUser("a1d9be8f-0b1c-4663-aecd-a9d76e11c124").ConfigureAwait(false);
 
             //            if (_serverListCount == null)
             //                return false;
 
-            var audios = await _as.GetAudiosForUser("a1d9be8f-0b1c-4663-aecd-a9d76e11c124", 1, 10).ConfigureAwait(false);
+            var riffs = await _as.GetRiffsForUser("a1d9be8f-0b1c-4663-aecd-a9d76e11c124", 1, 10).ConfigureAwait(false);
 
-            if (audios == null)
+            if (riffs == null)
                 return false;
 
-            _audios = audios.Select(i => new DroidAudio(i)).ToList();
+            _riffs = riffs.Select(i => new DroidRiff(i)).ToList();
 
             return true;
         }
 
         private void SetListAdapter()
         {           
-            _adapter = new AudioListAdapter(Activity, _audios);
+            _adapter = new AudioListAdapter(Activity, _riffs);
             _adapter.ServerListSize = (int)_serverListCount;
             _audioList.AddOnScrollListener(new AudioScrollListener(_as, _adapter, Activity, _manager));
             _audioList.SetAdapter(_adapter);

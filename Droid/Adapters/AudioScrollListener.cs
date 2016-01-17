@@ -14,11 +14,11 @@ namespace RiffSharer.Droid.Adapters
     public class AudioScrollListener : EndlessScrollListener
     {
 
-        private IAudioService _as;
+        private IRiffService _as;
         private AudioListAdapter _adapter;
         private Activity _activity;
 
-        public AudioScrollListener(IAudioService audioService, AudioListAdapter adapter, Activity activity, LinearLayoutManager manager)
+        public AudioScrollListener(IRiffService audioService, AudioListAdapter adapter, Activity activity, LinearLayoutManager manager)
             : base(manager)
         {
             _as = audioService;
@@ -28,8 +28,8 @@ namespace RiffSharer.Droid.Adapters
 
         public async override Task<bool> OnLoadMore(int page, int totalItemsCount)
         {
-            var list = await _as.GetAudiosForUser("a1d9be8f-0b1c-4663-aecd-a9d76e11c124", page, 10).ConfigureAwait(false);
-            var audios = list.Select(i => new DroidAudio(i));
+            var list = await _as.GetRiffsForUser("a1d9be8f-0b1c-4663-aecd-a9d76e11c124", page, 10).ConfigureAwait(false);
+            var audios = list.Select(i => new DroidRiff(i));
 
             _activity.RunOnUiThread(() =>
                 {

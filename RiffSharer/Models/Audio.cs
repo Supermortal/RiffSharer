@@ -11,8 +11,6 @@ namespace RiffSharer.Models
         [PrimaryKey]
         public string AudioID { get; set; }
 
-        public string Name { get; set; }
-
         public string LocalPath { get; set; }
 
         public DateTime DateCreated { get; set; }
@@ -25,7 +23,7 @@ namespace RiffSharer.Models
 
         public byte[] Data { get; set; }
 
-        public string UserID { get; set; }
+        public string RiffID { get; set; }
 
         public int DurationSeconds { get; set; }
 
@@ -34,7 +32,6 @@ namespace RiffSharer.Models
         public void UpdateModel(Audio a)
         {
             LocalPath = a.LocalPath;
-            Name = a.Name;
             AudioFormatInt = a.AudioFormatInt;
             ChannelConfigurationInt = a.ChannelConfigurationInt;
             SampleRate = a.SampleRate;

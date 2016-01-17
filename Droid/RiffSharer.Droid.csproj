@@ -122,8 +122,8 @@
     <Compile Include="Adapters\EndlessScrollListener.cs" />
     <Compile Include="Adapters\AudioListAdapter.cs" />
     <Compile Include="Adapters\AudioScrollListener.cs" />
-    <Compile Include="Models\DroidAudio.cs" />
     <Compile Include="Fragments\RiffFragment.cs" />
+    <Compile Include="Models\DroidRiff.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
