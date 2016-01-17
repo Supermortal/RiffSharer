@@ -80,6 +80,8 @@ namespace RiffSharer.Droid
             IoCHelper.Instance.BindService<IRiffService, TestRiffService>();
             IoCHelper.Instance.BindService<IUserService, DefaultUserService>();
             IoCHelper.Instance.BindService<ARiffRepository, SQLiteRiffRepository>();
+            IoCHelper.Instance.BindService<ACommentRepository, SQLiteCommentRepository>();
+            IoCHelper.Instance.BindService<ARatingRepository, SQLiteRatingRepository>();
         }
 
         private void SetViews()
