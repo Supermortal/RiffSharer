@@ -17,16 +17,26 @@ namespace RiffSharer.Services.Concrete
 
         private readonly AAudioRepository _ar;
         private readonly ARiffRepository _rr;
+        private readonly ACommentRepository _cr;
+        private readonly ARatingRepository _rar;
 
         public DefaultRiffService()
-            : this(IoCHelper.Instance.GetService<AAudioRepository>(), IoCHelper.Instance.GetService<ARiffRepository>())
+            : this(IoCHelper.Instance.GetService<AAudioRepository>(), 
+                   IoCHelper.Instance.GetService<ARiffRepository>(), 
+                   IoCHelper.Instance.GetService<ACommentRepository>(),
+                   IoCHelper.Instance.GetService<ARatingRepository>())
         {
         }
 
-        public DefaultRiffService(AAudioRepository ar, ARiffRepository rr)
+        public DefaultRiffService(AAudioRepository ar, 
+                                  ARiffRepository rr,
+                                  ACommentRepository cr,
+                                  ARatingRepository rar)
         {
             _ar = ar;
             _rr = rr;
+            _cr = cr;
+            _rar = rar;
         }
 
         public RiffDTO SaveRiff(string name, AudioFormat audioFormat, ChannelConfiguration channelConfiguration, int sampleRate, byte[] data, string userId)
@@ -73,6 +83,28 @@ namespace RiffSharer.Services.Concrete
         public async Task<int> GetRiffCountForUser(string userId)
         {
             return await _rr.GetCountForUser(userId).ConfigureAwait(false);
+        }
+
+        public void AddRiffComment(string riffId, string userId, string text)
+        {
+            Comment c = new Comment();
+
+            c.RiffID = riffId;
+            c.UserID = userId;
+            c.Text = text;
+
+            _cr.Insert(c);
+        }
+
+        public void AddRiffRating(string riffId, string userId, float value)
+        {
+            var r = new RiffSharer.Models.Rating();
+
+            r.RiffID = riffId;
+            r.UserID = userId;
+            r.Value = value;
+
+            _rar.Insert(r);
         }
     }
 }

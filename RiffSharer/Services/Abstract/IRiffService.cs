@@ -19,6 +19,10 @@ namespace RiffSharer.Services.Abstract
         Task<IEnumerable<RiffDTO>> GetRiffsForUser(string userId, int page, int pageSize);
 
         Task<int> GetRiffCountForUser(string userId);
+
+        void AddRiffComment(string riffId, string userId, string text);
+
+        void AddRiffRating(string riffId, string userId, float value);
     }
 }
 
